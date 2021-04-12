@@ -1,29 +1,35 @@
 {
   "defaultProfiles": [
     {
+      "username": "johndoe",
+      "email": "john@foo.com",
       "firstName": "John",
       "lastName": "Doe",
       "bio": "I am a computer science student",
       "picture":"",
-      "uhid": "1234-5678",
-      "email": "john@foo.com"
+      "uhid": 12345678,
+      "password": "changeme"
     },
     {
-      "firstName": "Admin",
-      "lastName": "",
+      "username": "admin",
+      "email": "admin@foo.com",
+      "firstName": "The",
+      "lastName": "Admin",
       "bio": "I am the admin of the CCC",
       "picture":"",
-      "uhid": "1234-5678",
-      "email": "admin@foo.com",
-      "role": "admin"
+      "uhid": 12345678,
+      "role": "admin",
+      "password": "changeme"
     },
     {
+      "username": "janedoe",
+      "email": "jane@foo.com",
       "firstName": "Jane",
       "lastName": "Doe",
       "bio": "I am looking to buy something",
       "picture":"",
-      "uhid": "1234-5678",
-      "email": "jane@foo.com"
+      "uhid": 12345678,
+      "password": "changeme"
     }
   ]
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
+import { Profiles } from '../../api/profile/Profiles';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -19,21 +20,27 @@ class Signup extends React.Component {
     this.setState({ [name]: value });
   }
 
-  /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
+  /* Handle Signup submission. Create user account and a profile entry, then redirect to the edit profile */
   submit = () => {
     const { email, password } = this.state;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        this.setState({ error: '', redirectToReferer: true });
+        Profiles.insert({ email }, (err2) => {
+          if (err2) {
+            this.setState({ error: err2.reason });
+          } else {
+            this.setState({ error: '', redirectToReferer: true });
+          }
+        });
       }
     });
   }
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/add' } };
+    const { from } = this.props.location.state || { from: { pathname: '/editprofile' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
