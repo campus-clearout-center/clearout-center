@@ -1,13 +1,29 @@
 {
-  "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
-    { "email": "john@foo.com", "password": "changeme" }
-  ],
-
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  "defaultProfiles": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "bio": "I am a computer science student",
+      "picture":"",
+      "uhid": "1234-5678",
+      "email": "john@foo.com"
+    },
+    {
+      "firstName": "Admin",
+      "lastName": "",
+      "bio": "I am the admin of the CCC",
+      "picture":"",
+      "uhid": "1234-5678",
+      "email": "admin@foo.com",
+      "role": "admin"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "bio": "I am looking to buy something",
+      "picture":"",
+      "uhid": "1234-5678",
+      "email": "jane@foo.com"
+    }
   ]
 }
