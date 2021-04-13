@@ -9,9 +9,8 @@ import { Roles } from 'meteor/alanning:roles';
 /** The NavBar appears at the top of every page. Rendered by the App Layout component. */
 class NavBar extends React.Component {
   render() {
-    const menuStyle = { marginBottom: '10px' };
     return (
-      <Menu color='green' style={menuStyle} attached="top" borderless inverted>
+      <Menu className='borderless topmenu' attached="top" borderless inverted>
         <div className='left-space'><Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Image src='https://cdn.discordapp.com/attachments/827753538145746977/831292462563328000/New_Project_1.png'
             size='small'/>

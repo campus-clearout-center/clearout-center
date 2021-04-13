@@ -7,3 +7,10 @@
 .left-space {
   margin-right: 450px;
 }
+
+.ui.borderless.topmenu.menu {
+  background: #147d30;
+  box-shadow: none;
+  border: none;
+  padding: 25px 25px 25px 25px;
+}
