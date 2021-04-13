@@ -1,0 +1,9 @@
+.uh-background {
+  background: url(images/Hawaii-Hall.jpg) no-repeat center center fixed;
+  background-size: cover;
+  padding: 250px;
+}
+
+.left-space {
+  margin-right: 450px;
+}
