@@ -1,16 +1,39 @@
 .uh-background {
-  background: url(images/Hawaii-Hall.jpg) no-repeat center center fixed;
+  background: url('https://www.hawaii.edu/news/wp-content/uploads/2019/05/manoa-ranking-beautiful-affordable-schools.jpg') no-repeat center center fixed;
   background-size: cover;
-  padding: 250px;
 }
 
 .left-space {
-  margin-right: 450px;
+  margin-right: 500px;
+}
+
+.invert {
+  color: #FFFFFF;
 }
 
 .ui.borderless.topmenu.menu {
   background: #147d30;
   box-shadow: none;
   border: none;
-  padding: 25px 25px 25px 25px;
+}
+
+.grad-background {
+  background: url('https://www.hawaii.edu/news/wp-content/uploads/2019/05/manoa-ranking-beautiful-affordable-schools.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 500px;
+  color: white;
+  padding-top: 200px;
+}
+
+.ui.center-description.grid {
+  height: 500px;
+  padding-top: 100px;
+}
+
+.footer-background {
+  background-color: darkgreen;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 150px;
+  text-align: center;
 }
