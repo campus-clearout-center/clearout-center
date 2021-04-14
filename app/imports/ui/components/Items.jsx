@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Card, Label, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Items extends React.Component {
@@ -25,6 +25,9 @@ class Items extends React.Component {
           <Label>
             {this.props.items.label}
           </Label>
+        </Card.Content>
+        <Card.Content extra>
+          <Link to={`/edit/${this.props.items._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
