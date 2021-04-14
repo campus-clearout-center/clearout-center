@@ -13,6 +13,16 @@ Meteor.publish(Stuffs.userPublicationName, function () {
   return this.ready();
 });
 
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Profiles.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Profiles.collection.find({ username: username });
+  }
+  return this.ready();
+});
+
 Meteor.publish(Profiles.userPublicationName, () => Profiles.collection.find());
 
 // Admin-level publication.
