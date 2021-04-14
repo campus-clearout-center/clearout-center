@@ -7,7 +7,6 @@
       "lastName": "Doe",
       "bio": "I am a computer science student",
       "picture":"",
-      "uhid": 12345678,
       "password": "changeme"
     },
     {
@@ -17,7 +16,6 @@
       "lastName": "Admin",
       "bio": "I am the admin of the CCC",
       "picture":"",
-      "uhid": 12345678,
       "role": "admin",
       "password": "changeme"
     },
@@ -28,7 +26,6 @@
       "lastName": "Doe",
       "bio": "I am looking to buy something",
       "picture":"",
-      "uhid": 12345678,
       "password": "changeme"
     }
   ]

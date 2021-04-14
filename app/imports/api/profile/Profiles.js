@@ -11,12 +11,11 @@ class ProfilesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       username: { type: String, unique: true, optional: false },
-      email: { type: String, index: true, unique: true },
+      email: { type: String, index: true, unique: false },
       firstName: { type: String, optional: false },
       lastName: { type: String, optional: false },
       bio: { type: String, optional: true },
       picture: { type: String, optional: true },
-      uhid: { type: Number, optional: false },
       role: { type: String, optional: true },
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
