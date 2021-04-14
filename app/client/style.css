@@ -7,10 +7,6 @@
   margin-right: 500px;
 }
 
-.invert {
-  color: #FFFFFF;
-}
-
 .ui.borderless.topmenu.menu {
   background: #147d30;
   box-shadow: none;
