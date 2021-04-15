@@ -32,6 +32,7 @@
       "picture":"",
       "owner": "jane@foo.com"
     }
+  ],
 
   "defaultData": [
     { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
