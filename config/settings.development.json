@@ -1,4 +1,8 @@
 {
+  "defaultAccounts": [
+    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
+    { "email": "john@foo.com", "password": "changeme" }
+  ],
   "defaultProfiles": [
     {
       "username": "johndoe",
@@ -6,8 +10,7 @@
       "firstName": "John",
       "lastName": "Doe",
       "bio": "I am a computer science student",
-      "picture":"",
-      "password": "changeme",
+      "picture":"https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
       "owner": "john@foo.com"
     },
     {
@@ -18,7 +21,6 @@
       "bio": "I am the admin of the CCC",
       "picture":"",
       "role": "admin",
-      "password": "changeme",
       "owner": "admin@foo.com"
     },
     {
@@ -28,7 +30,6 @@
       "lastName": "Doe",
       "bio": "I am looking to buy something",
       "picture":"",
-      "password": "changeme",
       "owner": "jane@foo.com"
     }
   ]
