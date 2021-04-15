@@ -19,12 +19,12 @@ function createUser(email, password, role) {
 }
 
 // Defines a new user and associates the profile with the user
-function addProfile({ username, email, firstName, lastName, bio, picture, uhid, role, password }) {
+function addProfile({ username, email, firstName, lastName, bio, picture, role, password }) {
   console.log(`Defining profile ${email}`);
   // Define the user in the Meteor accounts package
   createUser(email, password, role);
   // Create the profile
-  Profiles.collection.insert({ username, email, firstName, lastName, bio, picture, uhid, role, password });
+  Profiles.collection.insert({ username, email, firstName, lastName, bio, picture, role, password });
 }
 
 // When running app for first time, pass a settings file to set up a default user account.

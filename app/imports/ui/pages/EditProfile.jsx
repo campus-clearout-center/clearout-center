@@ -63,12 +63,6 @@ EditProfile.propTypes = {
   doc: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
-  profile: PropTypes.shape({
-    username: PropTypes.string,
-    quantity: PropTypes.number,
-    condition: PropTypes.string,
-    _id: PropTypes.string,
-  }).isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
