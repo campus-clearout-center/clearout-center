@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
-import { Profiles } from '../../api/profile/Profiles';
 import { Roles } from 'meteor/alanning:roles';
+import { Profiles } from '../../api/profile/Profiles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Item } from '../../api/item/Item';
 
