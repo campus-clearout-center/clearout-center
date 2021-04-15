@@ -1,5 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
+import { Stuffs } from '../../api/stuff/Stuff.js';
+import { Item } from '../../api/item/Item';
 
 /* eslint-disable no-console */
 
@@ -14,5 +16,18 @@ if (Profiles.collection.find().count() === 0) {
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default data.');
     Meteor.settings.defaultProfiles.map(data => addData(data));
+  }
+}
+
+function addItem(data) {
+  console.log(`  Adding: ${data.lastName} (${data.owner})`);
+  Item.collection.insert(data);
+}
+
+// Initialize the StuffsCollection if empty.
+if (Item.collection.find().count() === 0) {
+  if (Meteor.settings.defaultItem) {
+    console.log('Creating default item.');
+    Meteor.settings.defaultItem.map(data => addItem(data));
   }
 }
