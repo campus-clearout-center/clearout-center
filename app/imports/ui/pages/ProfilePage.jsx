@@ -14,7 +14,6 @@ class ProfilePage extends React.Component {
 
   // If subs are loaded then render page
   renderPage() {
-    console.log(this.props.profile[0].firstName);
     return (
       <Container>
         <Segment>
