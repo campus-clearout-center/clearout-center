@@ -1,21 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '../../api/profile/Profiles';
-
-// Create schema to speciy the structure of the data to appear in the form.
-const formSchema = new SimpleSchema({
-  username: String,
-  email: String,
-  firstName: String,
-  lastName: String,
-});
-
-const bridge = new SimpleSchema2Bridge(formSchema);
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
@@ -39,7 +27,7 @@ class Signup extends React.Component {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Profiles.collection.insert({ email, username: email, firstName, lastName }, (err2) => {
+        Profiles.collection.insert({ email, username: email, firstName, lastName, owner: email }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
@@ -64,7 +52,7 @@ class Signup extends React.Component {
             <Header as="h2" textAlign="center">
               Register your account
             </Header>
-            <Form schema={bridge} onSubmit={info => this.submit(info)}>
+            <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input
                   label="First Name"

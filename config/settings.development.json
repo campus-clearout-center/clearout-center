@@ -7,7 +7,8 @@
       "lastName": "Doe",
       "bio": "I am a computer science student",
       "picture":"",
-      "password": "changeme"
+      "password": "changeme",
+      "owner": "john@foo.com"
     },
     {
       "username": "admin",
@@ -17,7 +18,8 @@
       "bio": "I am the admin of the CCC",
       "picture":"",
       "role": "admin",
-      "password": "changeme"
+      "password": "changeme",
+      "owner": "admin@foo.com"
     },
     {
       "username": "janedoe",
@@ -26,7 +28,8 @@
       "lastName": "Doe",
       "bio": "I am looking to buy something",
       "picture":"",
-      "password": "changeme"
+      "password": "changeme",
+      "owner": "jane@foo.com"
     }
   ]
 }
