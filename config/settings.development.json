@@ -11,6 +11,7 @@
       "lastName": "Doe",
       "bio": "I am a computer science student",
       "picture":"https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+      "role": "",
       "owner": "john@foo.com"
     },
     {
@@ -29,6 +30,7 @@
       "firstName": "Jane",
       "lastName": "Doe",
       "bio": "I am looking to buy something",
+      "role": "",
       "picture":"",
       "owner": "jane@foo.com"
     }
