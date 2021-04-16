@@ -12,7 +12,7 @@ class Signup extends React.Component {
   /* Initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+    this.state = { firstName: '', lastName: '', email: '', password: '', error: '', redirectToReferer: false };
   }
 
   /* Update the form controls each time the user interacts with them. */
@@ -22,12 +22,12 @@ class Signup extends React.Component {
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the edit profile */
   submit = () => {
-    const { email, password } = this.state;
+    const { firstName, lastName, email, password } = this.state;
     Accounts.createUser({ email, username: email, password }, (err) => {
       if (err) {
         this.setState({ error: err.reason });
       } else {
-        Profiles.insert({ email }, (err2) => {
+        Profiles.collection.insert({ email, username: email, firstName, lastName, owner: email }, (err2) => {
           if (err2) {
             this.setState({ error: err2.reason });
           } else {
@@ -40,7 +40,7 @@ class Signup extends React.Component {
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/editprofile' } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -49,15 +49,35 @@ class Signup extends React.Component {
       <Container id="signup-page">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center">
+            <Header as="h2" textAlign="center" inverted>
               Register your account
             </Header>
             <Form onSubmit={this.submit}>
               <Segment stacked>
                 <Form.Input
+                  label="First Name"
+                  id="signup-form-firstName"
+                  icon="user"
+                  iconPosition="left"
+                  name="firstName"
+                  type="text"
+                  placeholder="John"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
+                  label="Last Name"
+                  id="signup-form-lastName"
+                  icon="user"
+                  iconPosition="left"
+                  name="lastName"
+                  type="text"
+                  placeholder="Doe"
+                  onChange={this.handleChange}
+                />
+                <Form.Input
                   label="Email"
                   id="signup-form-email"
-                  icon="user"
+                  icon="mail"
                   iconPosition="left"
                   name="email"
                   type="email"

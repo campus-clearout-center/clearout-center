@@ -2,22 +2,26 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
-class ProfilesCollection {
+/**
+ * The ItemCollection. It encapsulates state and variable values for stuff.
+ */
+class ItemCollection {
   constructor() {
     // The name of this collection.
-    this.name = 'ProfilesCollection';
+    this.name = 'ItemCollection';
     // Define the Mongo collection.
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      username: { type: String, unique: true, optional: false },
-      email: { type: String, index: true, unique: false },
-      firstName: { type: String, optional: false },
-      lastName: { type: String, optional: false },
-      bio: { type: String, optional: true },
-      picture: { type: String, optional: true },
-      role: { type: String, optional: true },
-      owner: { type: String, optional: false },
+      firstName: String,
+      lastName: String,
+      address: String,
+      itemName: String,
+      image: String,
+      price: String,
+      description: String,
+      label: String,
+      owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);
@@ -27,4 +31,8 @@ class ProfilesCollection {
   }
 }
 
-export const Profiles = new ProfilesCollection();
+/**
+ * The singleton instance of the ItemCollection.
+ * @type {ItemCollection}
+ */
+export const Item = new ItemCollection();

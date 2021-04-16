@@ -1,4 +1,8 @@
 {
+  "defaultAccounts": [
+    { "email": "admin@foo.com", "password": "changeme", "role": "admin" },
+    { "email": "john@foo.com", "password": "changeme" }
+  ],
   "defaultProfiles": [
     {
       "username": "johndoe",
@@ -6,8 +10,8 @@
       "firstName": "John",
       "lastName": "Doe",
       "bio": "I am a computer science student",
-      "picture":"",
-      "password": "changeme"
+      "picture":"https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+      "owner": "john@foo.com"
     },
     {
       "username": "admin",
@@ -17,7 +21,7 @@
       "bio": "I am the admin of the CCC",
       "picture":"",
       "role": "admin",
-      "password": "changeme"
+      "owner": "admin@foo.com"
     },
     {
       "username": "janedoe",
@@ -26,7 +30,20 @@
       "lastName": "Doe",
       "bio": "I am looking to buy something",
       "picture":"",
-      "password": "changeme"
+      "owner": "jane@foo.com"
     }
+  ],
+
+  "defaultData": [
+    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
+    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
+    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
+    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
+  ],
+
+  "defaultItem": [{
+  "firstName": "Philip", "lastName": "Johnson", "address": "POST 307, University of Hawaii", "itemName": "Refrigerator",
+  "image": "https://images-na.ssl-images-amazon.com/images/I/61tGvBnQW9L._AC_SL1200_.jpg", "price": "100.00$",
+  "description": "Partially used mini fridge", "label": "Appliances", "owner": "john@foo.com" }
   ]
 }
