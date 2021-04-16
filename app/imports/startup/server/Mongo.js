@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
-import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Item } from '../../api/item/Item';
 
 /* eslint-disable no-console */
