@@ -27,7 +27,7 @@ class Items extends React.Component {
           </Label>
         </Card.Content>
         <Card.Content extra>
-          <Link to={`/edit/${this.props.items._id}`}>Edit</Link>
+          <Link to={`/edititem/${this.props.items._id}`}>Edit</Link>
         </Card.Content>
       </Card>
     );
