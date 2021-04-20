@@ -14,14 +14,14 @@ class ProfilePage extends React.Component {
 
   // If subs are loaded then render page
   renderPage() {
-    console.log(this.props.profile);
+    // console.log(this.props.profile);
     return (
       <Container>
         <Segment>
           <Header as='h1' textAlign="center">Profile Page</Header>
           <Grid columns={2}>
             <Grid.Column width={6}>
-              <Link to="/editpage"><Icon name='pencil alternate'/>Edit</Link>
+              <Link to={`/edit/${this.props.profile._id}`}><Icon name='pencil alternate'/>Edit</Link>
               <Image src={this.props.profile.picture}/>
             </Grid.Column>
             <Grid.Column>

@@ -11,7 +11,7 @@ import ListStuffAdmin from '../pages/ListStuffAdmin';
 import ProfilePage from '../pages/ProfilePage';
 import ListItemsAdmin from '../pages/ListItemsAdmin';
 import AddItem from '../pages/AddItem';
-import EditItem from '../pages/EditItem';
+import EditProfile from '../pages/EditProfile';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
@@ -34,7 +34,7 @@ class App extends React.Component {
             <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <ProtectedRoute path="/list" component={ListItems}/>
             <ProtectedRoute path="/add" component={AddItem}/>
-            <ProtectedRoute path="/edit/:_id" component={EditItem}/>
+            <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
             <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
             <Route component={NotFound}/>
           </Switch>
