@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -15,8 +15,8 @@ const formSchema = new SimpleSchema({
   itemName: String,
   image: String,
   price: String,
-  description: String,
-  label: String,
+  description: { type: String, allowedValues: ['Never opened', 'Partially used', 'Still good'], defaultValue: 'Partially used' },
+  label: { type: String, allowedValues: ['Appliances', 'Textbook', 'Service'] },
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -50,12 +50,12 @@ class AddItem extends React.Component {
             <Segment>
               <TextField name='firstName'/>
               <TextField name='lastName'/>
-              <TextField name='address'/>
               <TextField name='itemName'/>
+              <TextField name='address'/>
               <TextField name='image'/>
               <TextField name='price'/>
-              <TextField name='description'/>
-              <TextField name='label'/>
+              <SelectField name='description'/>
+              <SelectField name='label'/>
               <SubmitField value='Submit'/>
               <ErrorsField/>
             </Segment>

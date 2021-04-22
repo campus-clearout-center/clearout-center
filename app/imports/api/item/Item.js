@@ -19,8 +19,8 @@ class ItemCollection {
       itemName: String,
       image: String,
       price: String,
-      description: String,
-      label: String,
+      description: { type: String, allowedValues: ['Never opened', 'Partially used', 'Still good'], defaultValue: 'Partially used' },
+      label: { type: String, allowedValues: ['Appliances', 'Textbook', 'Service'] },
       owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
