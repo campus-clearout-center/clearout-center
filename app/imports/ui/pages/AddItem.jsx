@@ -9,8 +9,6 @@ import { Item } from '../../api/item/Item';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
   address: String,
   itemName: String,
   image: String,
@@ -26,8 +24,10 @@ class AddItem extends React.Component {
 
   // On submit, insert the data.
   submit(data, formRef) {
-    const { firstName, lastName, address, itemName, image, price, description, label } = data;
+    const { address, itemName, image, price, description, label } = data;
     const owner = Meteor.user().username;
+    const firstName = 'Meteor.user().firstName';
+    const lastName = 'Meteor.user().lastName';
     Item.collection.insert({ firstName, lastName, address, itemName, image, price, description, label, owner },
       (error) => {
         if (error) {
@@ -48,8 +48,6 @@ class AddItem extends React.Component {
           <Header as="h2" textAlign="center">Add Item</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='firstName'/>
-              <TextField name='lastName'/>
               <TextField name='itemName'/>
               <TextField name='address'/>
               <TextField name='image'/>
