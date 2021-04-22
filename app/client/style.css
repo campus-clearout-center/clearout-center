@@ -13,6 +13,12 @@
   border: none;
 }
 
+.ui.borderless.middlemenu.grid {
+  background: red;
+  box-shadow: none;
+  border: none;
+}
+
 .grad-background {
   background: url('https://www.hawaii.edu/news/wp-content/uploads/2019/05/manoa-ranking-beautiful-affordable-schools.jpg') no-repeat center center fixed;
   background-size: cover;
