@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Card, Label, Button } from 'semantic-ui-react';
+import { Image, Card, Label, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 
@@ -28,6 +28,12 @@ class Items extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <Link to={`/edititem/${this.props.items._id}`}>Edit</Link>
+        </Card.Content>
+        <Card.Content extra>
+          <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red'>
+            <Icon name='exclamation triangle' />
+            Report Item
+          </Button>
         </Card.Content>
       </Card>
     );

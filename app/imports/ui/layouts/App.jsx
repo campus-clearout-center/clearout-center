@@ -7,7 +7,6 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
 import ProfilePage from '../pages/ProfilePage';
 import ListItemsAdmin from '../pages/ListItemsAdmin';
 import AddItem from '../pages/AddItem';
@@ -18,6 +17,8 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ListItems from '../pages/ListItems';
+import ReportUser from '../pages/ReportUser';
+import ReportList from '../pages/ReportList';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -32,13 +33,13 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
-            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
+            <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
+            <AdminProtectedRoute path="/reportlist" component={ReportList}/>
             <ProtectedRoute path="/list" component={ListItems}/>
             <ProtectedRoute path="/add" component={AddItem}/>
             <ProtectedRoute path="/edititem/:_id" component={EditItem}/>
             <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
-            <ProtectedRoute path="/edititem/:_id" component={EditItem}/>
-            <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
+            <ProtectedRoute path="/report/:_id" component={ReportUser}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>

@@ -47,5 +47,9 @@
   "firstName": "Philip", "lastName": "Johnson", "address": "POST 307, University of Hawaii", "itemName": "Refrigerator",
   "image": "https://images-na.ssl-images-amazon.com/images/I/61tGvBnQW9L._AC_SL1200_.jpg", "price": "100.00$",
   "description": "Partially used mini fridge", "label": "Appliances", "owner": "john@foo.com" }
-  ]
+  ],
+
+  "defaultAdmin": [{
+
+  }]
 }
