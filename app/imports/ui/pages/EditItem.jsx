@@ -34,8 +34,6 @@ class EditItem extends React.Component {
           <Header as="h2" textAlign="center">Edit Item</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='firstName'/>
-              <TextField name='lastName'/>
               <TextField name='address'/>
               <TextField name='itemName'/>
               <TextField name='image'/>
