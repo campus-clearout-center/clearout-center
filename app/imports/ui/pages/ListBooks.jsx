@@ -16,12 +16,12 @@ class ListItems extends React.Component {
 
   // Render the page once subscriptions have been received.
   renderPage() {
-    console.log(this.props.items.filter((item) => (item.label === 'Appliances')));
+    console.log(this.props.items.filter((item) => (item.label === 'Textbooks')));
     return (
       <Container>
         <Header as="h2" textAlign="center" inverted>List Items</Header>
         <Card.Group>
-          {this.props.items.filter((item) => (item.label === 'Appliances')).map((item, index) => <Items key={index} items={item}/>)}
+          {this.props.items.filter((item) => (item.label === 'Textbooks')).map((item, index) => <Items key={index} items={item}/>)}
 
         </Card.Group>
       </Container>
