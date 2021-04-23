@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, SelectField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -34,14 +34,12 @@ class EditItem extends React.Component {
           <Header as="h2" textAlign="center">Edit Item</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='firstName'/>
-              <TextField name='lastName'/>
-              <TextField name='address'/>
               <TextField name='itemName'/>
+              <TextField name='address'/>
               <TextField name='image'/>
               <TextField name='price'/>
-              <TextField name='description'/>
-              <TextField name='label'/>
+              <SelectField name='description'/>
+              <SelectField name='label'/>
               <ErrorsField/>
               <HiddenField name='owner' />
             </Segment>
