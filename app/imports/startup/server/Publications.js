@@ -22,6 +22,15 @@ Meteor.publish(Item.userPublicationName, function () {
   return this.ready();
 });
 
+// If logged in, then publish items by Label.
+// Meteor.publish(Item.userPublicationLabel, function () {
+//   if (this.userId) {
+//     const category = Meteor.users.findOne(this.userId).label;
+//     return Item.collection.find({ label: category });
+//   }
+//   return this.ready();
+// });
+
 // Admin-level publication.
 // If logged in and with admin role, then publish all documents from all users. Otherwise publish nothing.
 Meteor.publish(Stuffs.adminPublicationName, function () {
