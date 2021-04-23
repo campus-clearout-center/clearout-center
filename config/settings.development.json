@@ -46,10 +46,17 @@
   "defaultItem": [{
   "firstName": "Philip", "lastName": "Johnson", "address": "POST 307, University of Hawaii", "itemName": "Refrigerator",
   "image": "https://images-na.ssl-images-amazon.com/images/I/61tGvBnQW9L._AC_SL1200_.jpg", "price": "100.00$",
-  "description": "Partially used mini fridge", "label": "Appliances", "owner": "john@foo.com" }
+
   ],
 
   "defaultAdmin": [{
 
   }]
+
+    {
+      "firstName": "Philip", "lastName": "Johnson", "address": "POST 307, University of Hawaii", "itemName": "English Book",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/41PjyNZQEjL.jpg", "price": "50.00$",
+      "description": "Well taken care of English 100 textbook.", "label": "Books", "owner": "john@foo.com" }
+  ]
+
 }
