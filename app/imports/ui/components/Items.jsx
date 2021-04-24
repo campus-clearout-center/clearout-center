@@ -2,6 +2,8 @@ import React from 'react';
 import { Image, Card, Label, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Items extends React.Component {
@@ -26,9 +28,12 @@ class Items extends React.Component {
             {this.props.items.label}
           </Label>
         </Card.Content>
-        <Card.Content extra>
-          <Link to={`/edititem/${this.props.items._id}`}>Edit</Link>
-        </Card.Content>
+        {this.props.currentUser === this.props.items.owner ? (
+          <Card.Content extra>
+            <Link to={`/edititem/${this.props.items._id}`}>Edit</Link>
+          </Card.Content>
+        ) : ('')
+        }
         <Card.Content extra>
           <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red'>
             <Icon name='exclamation triangle' />
@@ -43,7 +48,12 @@ class Items extends React.Component {
 // Require a document to be passed to this component.
 Items.propTypes = {
   items: PropTypes.object.isRequired,
+  currentUser: Meteor.user() ? Meteor.user().username : '',
 };
 
+const ItemsContainer = withTracker(() => ({
+  currentUser: Meteor.user() ? Meteor.user().username : '',
+}))(Items);
+
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(Items);
+export default withRouter(ItemsContainer);
