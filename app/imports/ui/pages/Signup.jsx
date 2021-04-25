@@ -2,45 +2,59 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import { AutoForm, ErrorField, TextField } from 'uniforms-semantic';
+import swal from 'sweetalert';
+import SimpleSchema from 'simpl-schema';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import { Accounts } from 'meteor/accounts-base';
 import { Profiles } from '../../api/profile/Profiles';
 
+// Create a schema to specify the structure of the data to appear in the form.
+const formSchema = new SimpleSchema({
+  firstName: String,
+  lastName: String,
+  email: String,
+  password: String,
+});
+
+const bridge = new SimpleSchema2Bridge(formSchema);
 /**
  * Signup component is similar to signin component, but we create a new user instead.
  */
 class Signup extends React.Component {
-  /* Initialize state fields. */
+  /* initialize state fields. */
   constructor(props) {
     super(props);
-    this.state = { firstName: '', lastName: '', email: '', password: '', error: '', redirectToReferer: false };
-  }
-
-  /* Update the form controls each time the user interacts with them. */
-  handleChange = (e, { name, value }) => {
-    this.setState({ [name]: value });
+    this.state = { error: '', redirectToReferer: false };
   }
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the edit profile */
-  submit = () => {
-    const { firstName, lastName, email, password } = this.state;
-    Accounts.createUser({ email, username: email, password }, (err) => {
-      if (err) {
-        this.setState({ error: err.reason });
-      } else {
-        Profiles.collection.insert({ email, username: email, firstName, lastName, owner: email }, (err2) => {
-          if (err2) {
-            this.setState({ error: err2.reason });
-          } else {
-            this.setState({ error: '', redirectToReferer: true });
-          }
-        });
-      }
-    });
+  submit = (data) => {
+    const { firstName, lastName, email, password } = data;
+    if (!email.endsWith('@hawaii.edu')) {
+      this.setState({ error: 'Please enter a valid University of Hawaii email address!' });
+    } else { this.setState({ error: '' }); }
+    if (this.state.error === '') {
+      Accounts.createUser({ email, username: email, password }, (err) => {
+        if (err) {
+          this.setState({ error: err.reason });
+        } else {
+          Profiles.collection.insert({ email, username: email, firstName, lastName, owner: email }, (err2) => {
+            if (err2) {
+              this.setState({ error: err2.reason });
+            } else {
+              swal('Success', 'Profiles created successfully', 'success');
+              this.setState({ error: '', redirectToReferer: true });
+            }
+          });
+        }
+      });
+    }
   }
 
   /* Display the signup form. Redirect to add page after successful registration and login. */
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || { from: { pathname: '/profile' } };
     // if correct authentication, redirect to from: page instead of signup screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
@@ -52,51 +66,55 @@ class Signup extends React.Component {
             <Header as="h2" textAlign="center" inverted>
               Register your account
             </Header>
-            <Form onSubmit={this.submit}>
+            <AutoForm schema={bridge} onSubmit={info => this.submit(info)}>
               <Segment stacked>
-                <Form.Input
+                <TextField
                   label="First Name"
                   id="signup-form-firstName"
                   icon="user"
-                  iconPosition="left"
                   name="firstName"
                   type="text"
                   placeholder="John"
-                  onChange={this.handleChange}
                 />
-                <Form.Input
+                <ErrorField name="firstName">
+                  <span>Please enter your first name!</span>
+                </ErrorField>
+                <TextField
                   label="Last Name"
                   id="signup-form-lastName"
                   icon="user"
-                  iconPosition="left"
                   name="lastName"
                   type="text"
                   placeholder="Doe"
-                  onChange={this.handleChange}
                 />
-                <Form.Input
+                <ErrorField name="lastName">
+                  <span>Please enter your last name!</span>
+                </ErrorField>
+                <TextField
                   label="Email"
                   id="signup-form-email"
                   icon="mail"
-                  iconPosition="left"
                   name="email"
                   type="email"
-                  placeholder="E-mail address"
-                  onChange={this.handleChange}
+                  placeholder="johndoe@hawaii.edu"
                 />
-                <Form.Input
+                <ErrorField name="email">
+                  <span>Please enter an email address!</span>
+                </ErrorField>
+                <TextField
                   label="Password"
                   id="signup-form-password"
                   icon="lock"
-                  iconPosition="left"
                   name="password"
                   placeholder="Password"
                   type="password"
-                  onChange={this.handleChange}
                 />
+                <ErrorField name="password">
+                  <span>Please enter a password</span>
+                </ErrorField>
                 <Form.Button id="signup-form-submit" content="Submit"/>
               </Segment>
-            </Form>
+            </AutoForm>
             <Message>
               Already have an account? Login <Link to="/signin">here</Link>
             </Message>
