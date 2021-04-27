@@ -64,7 +64,7 @@ ProfilePage.propTypes = {
 export default withTracker(() => {
   // Populate mini mongo with collection before render()
   const sub = Meteor.subscribe(Profiles.userPublicationName);
-  const sub2 = Meteor.subscribe(Item.userPublicationName);
+  const sub2 = Meteor.subscribe(Item.ownerPublicationName);
   // check if subs ready
   const ready = sub.ready() && sub2.ready();
   // Get the profile documents
