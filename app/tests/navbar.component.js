@@ -50,6 +50,26 @@ class NavBar {
   async gotoReportList(testController) {
     await testController.click('#reportlist-page');
   }
+
+  async gotoAppliances(testController) {
+    await testController.click('#catalog');
+    await testController.click('#appliances');
+  }
+
+  async gotoBooks(testController) {
+    await testController.click('#catalog');
+    await testController.click('#books');
+  }
+
+  async gotoServices(testController) {
+    await testController.click('#catalog');
+    await testController.click('#services');
+  }
+
+  async gotoMisc(testController) {
+    await testController.click('#catalog');
+    await testController.click('#misc');
+  }
 }
 
 export const navBar = new NavBar();

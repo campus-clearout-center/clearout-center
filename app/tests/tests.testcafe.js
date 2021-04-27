@@ -7,6 +7,8 @@ import { navBar } from './navbar.component';
 import { listItemsPage } from './listitems.page';
 import { reportItemPage } from './reportitem.page';
 import { reportListPage } from './reportlist.page';
+import { editprofilePage } from './editprofile.page';
+import { categoryPage } from './category.page';
 
 /* global fixture:false, test:false */
 
@@ -15,6 +17,7 @@ const credentials = { firstName: 'John', lastName: 'Doe', username: 'john@foo.co
 const newcred = { firstName: 'Rick', lastName: 'Roll', username: 'rickroll@hawaii.edu', password: 'changeme' };
 const admincreds = { username: 'admin@foo.com', password: 'changeme' };
 const report = 'it is inappropriate';
+const bio = 'I love UH';
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
@@ -77,4 +80,28 @@ test('Test if the report exists on the admin page', async (testController) => {
   await navBar.gotoReportList(testController);
   await reportListPage.isDisplayed(testController);
   await reportListPage.hasCard(testController);
+});
+
+test('Test the Edit Profile page', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoProfilePage(testController);
+  await profilePage.gotoEdit(testController);
+  await editprofilePage.isDisplayed(testController);
+  await editprofilePage.editBio(testController, bio);
+});
+
+test('Test the Category page', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoAppliances(testController);
+  await categoryPage.hasDefaultItem(testController);
+  await navBar.gotoBooks(testController);
+  await categoryPage.hasDefaultItem(testController);
+  await navBar.gotoServices(testController);
+  await categoryPage.hasDefaultItem(testController);
+  await navBar.gotoMisc(testController);
+  await categoryPage.hasDefaultItem(testController);
 });

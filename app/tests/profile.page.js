@@ -17,6 +17,10 @@ class ProfilePage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
+  async gotoEdit(testController) {
+    await testController.click('#edit-profile');
+  }
+
 }
 
 export const profilePage = new ProfilePage();
