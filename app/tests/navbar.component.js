@@ -27,6 +27,7 @@ class NavBar {
   async logout(testController) {
     await testController.expect(Selector('#navbar-current-user').exists).ok();
     await testController.click('#navbar-current-user');
+    await testController.click('#navbar-current-user');
     await testController.click('#navbar-sign-out');
   }
 
