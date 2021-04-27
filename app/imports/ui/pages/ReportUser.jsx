@@ -41,7 +41,7 @@ class ReportUser extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
     return (
-      <Grid className='borderless middlemenu' container centered>
+      <Grid className='borderless middlemenu' container centered id='report-item'>
         <Grid.Column>
           <Header as="h2" textAlign="center" inverted>Report the user</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
@@ -50,8 +50,8 @@ class ReportUser extends React.Component {
               <TextField name='lastName' disabled/>
               <TextField name='itemName' disabled/>
               <TextField name='image' disabled/>
-              <TextField name='reason'/>
-              <SubmitField value='Submit'/>
+              <TextField name='reason' id='report-area'/>
+              <SubmitField value='Submit' id='report-submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

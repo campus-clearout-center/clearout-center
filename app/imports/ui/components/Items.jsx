@@ -35,7 +35,7 @@ class Items extends React.Component {
         ) : ('')
         }
         <Card.Content extra>
-          <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red'>
+          <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red' id='report-button'>
             <Icon name='exclamation triangle' />
             Report Item
           </Button>
@@ -48,7 +48,7 @@ class Items extends React.Component {
 // Require a document to be passed to this component.
 Items.propTypes = {
   items: PropTypes.object.isRequired,
-  currentUser: Meteor.user() ? Meteor.user().username : '',
+  currentUser: PropTypes.string.isRequired,
 };
 
 const ItemsContainer = withTracker(() => ({

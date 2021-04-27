@@ -15,6 +15,14 @@ Meteor.publish(Profiles.userPublicationName, function () {
   return this.ready();
 });
 
+Meteor.publish(Item.ownerPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Item.collection.find({ owner: username });
+  }
+  return this.ready();
+});
+
 Meteor.publish(Item.userPublicationName, function () {
   if (this.userId) {
     return Item.collection.find();

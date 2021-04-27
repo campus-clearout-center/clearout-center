@@ -23,7 +23,7 @@ class ListItem extends React.Component {
 ListItem.propTypes = {
   item: PropTypes.shape({
     itemName: PropTypes.string,
-    price: PropTypes.number,
+    price: PropTypes.string,
     description: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
