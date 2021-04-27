@@ -17,8 +17,9 @@ class ReportitemPage {
     await this.isDisplayed(testController);
     await testController.typeText('#report-area', report);
     await testController.click('#report-submit');
+    await testController.pressKey('enter');
     // await testController.wait(5000);
-    await testController.click('#report-submit');
+    // await testController.click('#report-submit');
   }
 }
 

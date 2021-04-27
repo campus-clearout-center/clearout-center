@@ -29,6 +29,9 @@ class ItemAdmin extends React.Component {
         <Card.Content extra>
           <p>{this.props.items.owner}</p>
         </Card.Content>
+        <Card.Content>
+          <Button negative>Delete Item</Button>
+        </Card.Content>
       </Card>
     );
   }
