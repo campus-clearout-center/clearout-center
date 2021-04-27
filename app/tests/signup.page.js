@@ -19,6 +19,7 @@ class SignupPage {
     await testController.typeText('#signup-form-lastName', lastName);
     await testController.typeText('#signup-form-email', username);
     await testController.typeText('#signup-form-password', password);
+    await testController.click('#signup-form-submit');
     await testController.pressKey('enter');
     await navBar.isLoggedIn(testController, username);
   }
