@@ -20,7 +20,7 @@ class ProfilePage extends React.Component {
     return (
       <Container>
         <Segment>
-          <Header as='h1' textAlign="center">Profile Page</Header>
+          <Header as='h1' textAlign="center" id='profile-page'>Profile Page</Header>
           <Grid columns={2}>
             <Grid.Column width={6}>
               <Link to={`/edit/${this.props.profile._id}`}><Icon name='pencil alternate'/>Edit</Link>
@@ -65,7 +65,7 @@ ProfilePage.propTypes = {
 export default withTracker(() => {
   // Populate mini mongo with collection before render()
   const sub = Meteor.subscribe(Profiles.userPublicationName);
-  const sub2 = Meteor.subscribe(Item.userPublicationName);
+  const sub2 = Meteor.subscribe(Item.ownerPublicationName);
   // check if subs ready
   const ready = sub.ready() && sub2.ready();
   // Get the profile documents

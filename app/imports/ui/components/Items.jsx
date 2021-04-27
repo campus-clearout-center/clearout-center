@@ -35,7 +35,7 @@ class Items extends React.Component {
         ) : ('')
         }
         <Card.Content extra>
-          <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red'>
+          <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red' id='report-button'>
             <Icon name='exclamation triangle' />
             Report Item
           </Button>

@@ -20,7 +20,7 @@ class ReportList extends React.Component {
   renderPage() {
     console.log(this.props.report.length);
     return (
-      <Container>
+      <Container id='reportlist'>
         <Header as="h2" textAlign="center" inverted>The List of User Reports</Header>
         <Card.Group>
           {this.props.report.map((report, index) => <Reports key={index} reports={report}/>)}

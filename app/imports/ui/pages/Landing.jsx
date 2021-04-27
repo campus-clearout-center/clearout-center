@@ -12,13 +12,13 @@ class Landing extends React.Component {
       <Container fluid className='grad-background'>
         <Grid columns={1} textAlign={'center'}>
           <Grid.Column>
-            <Header as={'h1'} inverted>Welcome to Campus Clearout Center</Header>
+            <Header id='landing-page' as={'h1'} inverted>Welcome to Campus Clearout Center</Header>
             <p>UH Manoa online thrift store. We want to promote recycling by giving the UH community a safe, secure online store to buy and sell your old things.</p>
             {this.props.currentUser === '' ? [
-              <Link to={'signin'} key='login'>
+              <Link to={'signin'} key='login' id='login-button'>
                 <Button>Log In</Button>
               </Link>,
-              <Link to={'signup'} key='register'>
+              <Link to={'signup'} key='register' id='signup-button'>
                 <Button>Register</Button>
               </Link>]
               : ('')
