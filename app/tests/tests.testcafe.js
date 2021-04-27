@@ -3,13 +3,16 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { profilePage } from './profile.page';
+// eslint-disable-next-line import/named
 import { navBar } from './navbar.component';
 import { listItemsPage } from './listitems.page';
 import { reportItemPage } from './reportitem.page';
 import { reportListPage } from './reportlist.page';
-import { addItemPage } from './additem.page';
-import { editItemPage } from './edititem.page';
+import { categoryPage } from './category.page';
+import { editprofilePage } from './editprofile.page';
 import { offerItemPage } from './offeritem.page';
+import { editItemPage } from './edititem.page';
+import { addItemPage } from './additem.page';
 
 /* global fixture:false, test:false */
 
@@ -19,6 +22,7 @@ const newcred = { firstName: 'Rick', lastName: 'Roll', username: 'rickroll@hawai
 const admincreds = { username: 'admin@foo.com', password: 'changeme' };
 const report = 'it is inappropriate';
 const item = { itemName: 'Phone', address: '2712 Nihi Street', image: 'https://www.lg.com/us/images/cell-phones/md07513841/gallery/Desktop-01.jpg', price: '100', description: 'Partially used', label: 'Appliances' };
+const bio = 'I love UH';
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
@@ -133,4 +137,27 @@ test('Test if you can offer an item', async (testController) => {
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+test('Test the Edit Profile page', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoProfilePage(testController);
+  await profilePage.gotoEdit(testController);
+  await editprofilePage.isDisplayed(testController);
+  await editprofilePage.editBio(testController, bio);
+});
+
+test('Test the Category page', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoAppliances(testController);
+  await categoryPage.hasDefaultItem(testController);
+  await navBar.gotoBooks(testController);
+  await categoryPage.hasDefaultItem(testController);
+  await navBar.gotoServices(testController);
+  await categoryPage.hasDefaultItem(testController);
+  await navBar.gotoMisc(testController);
+  await categoryPage.hasDefaultItem(testController);
 });

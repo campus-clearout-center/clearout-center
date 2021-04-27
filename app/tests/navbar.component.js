@@ -61,7 +61,27 @@ class NavBar {
     await testController.click('#catalog');
     await testController.click('#books');
     await testController.click('#catalog');
-    await testController.click('#service');
+    await testController.click('#services');
+    await testController.click('#catalog');
+    await testController.click('#misc');
+  }
+
+  async gotoAppliances(testController) {
+    await testController.click('#catalog');
+    await testController.click('#appliances');
+  }
+
+  async gotoBooks(testController) {
+    await testController.click('#catalog');
+    await testController.click('#books');
+  }
+
+  async gotoServices(testController) {
+    await testController.click('#catalog');
+    await testController.click('#services');
+  }
+
+  async gotoMisc(testController) {
     await testController.click('#catalog');
     await testController.click('#misc');
   }
