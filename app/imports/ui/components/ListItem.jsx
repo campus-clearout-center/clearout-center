@@ -9,7 +9,7 @@ class ListItem extends React.Component {
     return (
       <Table.Row>
         <Table.Cell>{this.props.item.itemName}</Table.Cell>
-        <Table.Cell>{this.props.item.price}</Table.Cell>
+        <Table.Cell>${this.props.item.price}</Table.Cell>
         <Table.Cell>{this.props.item.description}</Table.Cell>
         <Table.Cell>{this.props.item.buyer}</Table.Cell>
         <Table.Cell>
@@ -24,7 +24,7 @@ class ListItem extends React.Component {
 ListItem.propTypes = {
   item: PropTypes.shape({
     itemName: PropTypes.string,
-    price: PropTypes.string,
+    price: PropTypes.number,
     description: PropTypes.string,
     buyer: PropTypes.string,
     _id: PropTypes.string,

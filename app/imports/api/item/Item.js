@@ -18,7 +18,7 @@ class ItemCollection {
       address: String,
       itemName: String,
       image: String,
-      price: String,
+      price: Number,
       description: { type: String, allowedValues: ['Never opened', 'Partially used', 'Still good'], defaultValue: 'Partially used' },
       label: { type: String, allowedValues: ['Appliances', 'Textbook', 'Service', 'Miscellaneous'] },
       buyer: { type: String, optional: true },

@@ -18,7 +18,7 @@ class ListItems extends React.Component {
   renderPage() {
     console.log(this.props.items.filter((item) => (item.label === 'Service')));
     return (
-      <Container>
+      <Container id='list-services'>
         <Header as="h2" textAlign="center" inverted>List Items</Header>
         <Card.Group>
           {this.props.items.filter((item) => (item.label === 'Service')).map((item, index) => <Items key={index} items={item}/>)}

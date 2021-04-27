@@ -42,8 +42,8 @@ class OffersPage extends React.Component {
               <Divider/>
               <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
                 <Segment>
-                  <p>You will be intending purchasing {this.props.doc.itemName}, your email address that you signed up with will be sent to their account to schedule an exchange</p>
-                  <SubmitField value='Buy'/>
+                  <p>You are intending on purchasing {this.props.doc.itemName}, your email address that you signed up with will be sent to their account to schedule an exchange</p>
+                  <SubmitField value='Buy' id='purchase-item'/>
                 </Segment>
               </AutoForm>
             </Grid.Column>

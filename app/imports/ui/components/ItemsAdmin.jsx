@@ -19,7 +19,7 @@ class ItemAdmin extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Card.Header>{this.props.items.price}<Button primary floated='right'>Offer</Button> </Card.Header>
+          <Card.Header>${this.props.items.price}<Button primary floated='right'>Offer</Button> </Card.Header>
         </Card.Content>
         <Card.Content extra>
           <Label>
