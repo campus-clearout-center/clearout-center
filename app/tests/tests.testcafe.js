@@ -33,9 +33,11 @@ test('Test that landing page shows up', async (testController) => {
 
 /** Will fail if you do not reset meteor... Comment out signup test when adding new tests */
 test('Test that signup works', async (testController) => {
+  const newUser = `user-${new Date().getTime()}@hawaii.edu`;
   await landingPage.gotoSignupPage(testController);
-  await signupPage.signupUser(testController, newcred.firstName, newcred.lastName, newcred.username, newcred.password);
+  await signupPage.signupUser(testController, newcred.firstName, newcred.lastName, newUser, newcred.password);
   await profilePage.isDisplayed(testController);
+  await navBar.isLoggedIn(testController, newUser);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
