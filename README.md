@@ -1,2 +1,2 @@
-![ci-badge](https://github.com/campus-clearou-center/clearout-center/workflows/campus-clearout-center/badge.svg)
+![ci-badge](https://github.com/campus-clearout-center/clearout-center/workflows/campus-clearout-center/badge.svg)
 
