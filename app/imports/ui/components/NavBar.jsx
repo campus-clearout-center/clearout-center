@@ -16,13 +16,13 @@ class NavBar extends React.Component {
             size='small'/>
         </Menu.Item></div>
         {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Sell Item</Menu.Item>,
+          [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id='additem'>Sell Item</Menu.Item>,
             <Dropdown key={'list'} item text={'Catalog'} id='catalog'>
               <Dropdown.Menu>
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/list" key='list' id='appliances'>Appliances</Dropdown.Item>
-                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/books" key='books' >Textbooks</Dropdown.Item>
-                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/service" key='service' >Services</Dropdown.Item>
-                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/misc" key='misc' >Miscellaneous</Dropdown.Item>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/books" key='books' id={'books'}>Textbooks</Dropdown.Item>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/service" key='service' id={'services'}>Services</Dropdown.Item>
+                <Dropdown.Item as={NavLink} activeClassName="active" exact to="/misc" key='misc' id={'misc'}>Miscellaneous</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>,
           ]

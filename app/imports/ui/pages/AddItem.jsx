@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SubmitField, TextField, SelectField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -46,18 +46,18 @@ class AddItem extends React.Component {
   render() {
     let fRef = null;
     return (
-      <Grid container centered>
+      <Grid container centered id='add-item'>
         <Grid.Column>
           <Header as="h2" textAlign="center" inverted>Sell Item</Header>
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
-              <TextField name='itemName'/>
-              <TextField name='address'/>
-              <TextField name='image'/>
-              <TextField name='price'/>
-              <SelectField name='description'/>
-              <SelectField name='label'/>
-              <SubmitField value='Submit'/>
+              <TextField name='itemName' id='itemName-area'/>
+              <TextField name='address' id='address-area'/>
+              <TextField name='image' id='image-area'/>
+              <NumField name='price' id='price-area'/>
+              <SelectField name='description' id='description-area'/>
+              <SelectField name='label' id='label-area'/>
+              <SubmitField value='Submit' id='item-submit'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>

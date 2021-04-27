@@ -16,6 +16,14 @@ class ListitemsPage {
   async pressReport(testController) {
     await testController.click('#report-button');
   }
+
+  async pressEdit(testController) {
+    await testController.click('#editItem');
+  }
+
+  async pressOffer(testController) {
+    await testController.click('#offer');
+  }
 }
 
 export const listItemsPage = new ListitemsPage();

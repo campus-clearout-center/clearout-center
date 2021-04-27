@@ -54,7 +54,7 @@
       "description": "Partially used",
       "label": "Appliances",
       "owner": "john@foo.com",
-      "price": "100.00$"
+      "price": 100.00
     },
     {
       "firstName": "Philip",
@@ -62,7 +62,7 @@
       "address": "POST 307, University of Hawaii",
       "itemName": "English Book",
       "image": "https://images-na.ssl-images-amazon.com/images/I/41PjyNZQEjL.jpg",
-      "price": "50.00$",
+      "price": "50.00",
       "description": "Partially used",
       "label": "Textbook",
       "owner": "john@foo.com" },
@@ -72,7 +72,7 @@
       "address": "QLC 101, University of Hawaii",
       "itemName": "Tutoring",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIvRtCsy3wfuiOAf8qg1M46rGR8dcOdQBow&usqp=CAU",
-      "price": "15.00$",
+      "price": 15.00,
       "description": "Partially used",
       "label": "Service",
       "owner": "jane@foo.com" },
@@ -82,7 +82,7 @@
       "address": "QLC 101, University of Hawaii",
       "itemName": "Fan",
       "image": "https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/products/fans-and-heaters/subcat/fans-heaters-dyson-hot-and-cool-stats.jpg?$responsive$&cropPathE=mobile&fit=stretch,1&wid=640",
-      "price": "30.00$",
+      "price": 30.00,
       "description": "Partially used",
       "label": "Miscellaneous",
       "owner": "jane@foo.com" }

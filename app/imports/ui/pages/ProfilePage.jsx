@@ -23,7 +23,7 @@ class ProfilePage extends React.Component {
           <Header as='h1' textAlign="center" id='profile-page'>Profile Page</Header>
           <Grid columns={2}>
             <Grid.Column width={6}>
-              <Link to={`/edit/${this.props.profile._id}`}><Icon name='pencil alternate'/>Edit</Link>
+              <Link id={'edit-profile'} to={`/edit/${this.props.profile._id}`}><Icon name='pencil alternate'/>Edit</Link>
               <Image src={this.props.profile.picture}/>
             </Grid.Column>
             <Grid.Column>
@@ -38,7 +38,8 @@ class ProfilePage extends React.Component {
                     <Table.HeaderCell singleLine>Item Name</Table.HeaderCell>
                     <Table.HeaderCell>Price</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
-                    <Table.HeaderCell></Table.HeaderCell>
+                    <Table.HeaderCell>Buyer</Table.HeaderCell>
+                    <Table.HeaderCell>Edit</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>

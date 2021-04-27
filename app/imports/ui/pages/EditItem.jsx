@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, SelectField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -29,18 +29,21 @@ class EditItem extends React.Component {
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   renderPage() {
     return (
-      <Grid container centered>
+      <Grid container centered id='editItem'>
         <Grid.Column>
           <Header as="h2" textAlign="center">Edit Item</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='itemName'/>
-              <TextField name='address'/>
-              <TextField name='image'/>
-              <TextField name='price'/>
-              <SelectField name='description'/>
-              <SelectField name='label'/>
+              <TextField name='itemName' id='edit-itemName'/>
+              <TextField name='address' id='edit-address'/>
+              <TextField name='image' id='edit-image'/>
+              <NumField name='price' id='edit-price'/>
+              <SelectField name='description' id='edit-description'/>
+              <SelectField name='label' id='edit-label'/>
+              <SubmitField value='Submit' id='edit-submit'/>
               <ErrorsField/>
+              <HiddenField name='firstName' />
+              <HiddenField name='lastName' />
               <HiddenField name='owner' />
             </Segment>
           </AutoForm>
