@@ -11,6 +11,7 @@ class ListItem extends React.Component {
         <Table.Cell>{this.props.item.itemName}</Table.Cell>
         <Table.Cell>{this.props.item.price}</Table.Cell>
         <Table.Cell>{this.props.item.description}</Table.Cell>
+        <Table.Cell>{this.props.item.buyer}</Table.Cell>
         <Table.Cell>
           <Link to={`/edititem/${this.props.item._id}`}>Edit</Link>
         </Table.Cell>
@@ -23,8 +24,9 @@ class ListItem extends React.Component {
 ListItem.propTypes = {
   item: PropTypes.shape({
     itemName: PropTypes.string,
-    price: PropTypes.number,
+    price: PropTypes.string,
     description: PropTypes.string,
+    buyer: PropTypes.string,
     _id: PropTypes.string,
   }).isRequired,
 };

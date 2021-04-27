@@ -1,11 +1,24 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Header, Container, Loader, Segment, Grid, Image, Divider, Button } from 'semantic-ui-react';
+import { Header, Container, Loader, Segment, Grid, Image, Divider } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
+import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
+import { AutoForm, SubmitField } from 'uniforms-semantic';
 import { Item } from '../../api/item/Item';
 
+const bridge = new SimpleSchema2Bridge(Item.schema);
+
 class OffersPage extends React.Component {
+
+  submit(data) {
+    const { firstName, lastName, address, itemName, image, price, description, label, _id } = data;
+    const buyer = Meteor.user().username;
+    Item.collection.update(_id, { $set: { firstName, lastName, address, itemName, image, price, description, label, buyer } }, (error) => (error ?
+      swal('Error', error.message, 'error') :
+      swal('Success', 'Item updated successfully', 'success')));
+  }
 
   render() {
     return (this.props.ready) ? this.renderPage() : <Loader active>Getting data</Loader>;
@@ -22,12 +35,17 @@ class OffersPage extends React.Component {
               <Image src={this.props.doc.image}/>
             </Grid.Column>
             <Grid.Column>
-              <p>Condition: {this.props.doc.condition}</p>
-              <p>Description: {this.props.doc.description}</p>
+              <p>Condition: {this.props.doc.description}</p>
+              <p>Description: {this.props.doc.label}</p>
               <p>Address: {this.props.doc.address}</p>
               <p>Price: {this.props.doc.price}</p>
               <Divider/>
-              <Button icon color='blue'>Buy</Button>
+              <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+                <Segment>
+                  <p>You will be intending purchasing {this.props.doc.itemName}, your email address that you signed up with will be sent to their account to schedule an exchange</p>
+                  <SubmitField value='Buy'/>
+                </Segment>
+              </AutoForm>
             </Grid.Column>
           </Grid>
         </Segment>

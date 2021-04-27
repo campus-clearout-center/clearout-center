@@ -38,7 +38,8 @@ class ProfilePage extends React.Component {
                     <Table.HeaderCell singleLine>Item Name</Table.HeaderCell>
                     <Table.HeaderCell>Price</Table.HeaderCell>
                     <Table.HeaderCell>Description</Table.HeaderCell>
-                    <Table.HeaderCell></Table.HeaderCell>
+                    <Table.HeaderCell>Buyer</Table.HeaderCell>
+                    <Table.HeaderCell>Edit</Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
                 <Table.Body>
