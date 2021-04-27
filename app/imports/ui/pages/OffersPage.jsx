@@ -38,7 +38,7 @@ class OffersPage extends React.Component {
               <p>Condition: {this.props.doc.description}</p>
               <p>Description: {this.props.doc.label}</p>
               <p>Address: {this.props.doc.address}</p>
-              <p>Price: {this.props.doc.price}</p>
+              <p>Price: ${this.props.doc.price}</p>
               <Divider/>
               <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
                 <Segment>
