@@ -4,6 +4,7 @@ import { Profiles } from '../../api/profile/Profiles';
 import { Stuffs } from '../../api/stuff/Stuff';
 import { Item } from '../../api/item/Item';
 import { Admin } from '../../api/admin/Admin';
+import { Notes } from '../../api/note/Notes';
 
 // User-level publication.
 // If logged in, then publish documents owned by this user. Otherwise publish nothing.
@@ -66,6 +67,16 @@ Meteor.publish(Admin.adminPublicationName, function () {
 Meteor.publish(null, function () {
   if (this.userId) {
     return Meteor.roleAssignment.find({ 'user._id': this.userId });
+  }
+  return this.ready();
+});
+
+// User-level publication.
+// If logged in, then publish documents owned by this user. Otherwise publish nothing.
+Meteor.publish(Notes.userPublicationName, function () {
+  if (this.userId) {
+    const username = Meteor.users.findOne(this.userId).username;
+    return Notes.collection.find({ owner: username });
   }
   return this.ready();
 });

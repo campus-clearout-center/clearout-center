@@ -1,12 +1,15 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Header, Container, Loader, Segment, Grid, Image, Divider, Icon, Table } from 'semantic-ui-react';
+import { Header, Container, Loader, Segment, Grid, Image, Divider, Icon, Table, Feed } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Profiles } from '../../api/profile/Profiles';
 import { Item } from '../../api/item/Item';
 import ListItem from '../components/ListItem';
+import Note from '../components/Note';
+import { Notes } from '../../api/note/Notes';
+import AddNote from './AddNote';
 
 class ProfilePage extends React.Component {
 
@@ -48,6 +51,9 @@ class ProfilePage extends React.Component {
               </Table>
             </Grid.Column>
           </Grid>
+          <Feed>
+            <AddNote owner={this.props.profile.owner} contactId={this.props.profile._id}/>
+          </Feed>
         </Segment>
       </Container>
     );
@@ -59,6 +65,7 @@ ProfilePage.propTypes = {
   item: PropTypes.array.isRequired,
   profile: PropTypes.object,
   ready: PropTypes.bool.isRequired,
+  notes: PropTypes.array,
 };
 
 // withTracker connects Metoer data to React Component
@@ -66,15 +73,18 @@ export default withTracker(() => {
   // Populate mini mongo with collection before render()
   const sub = Meteor.subscribe(Profiles.userPublicationName);
   const sub2 = Meteor.subscribe(Item.ownerPublicationName);
+  const sub3 = Meteor.subscribe(Notes.userPublicationName);
   // check if subs ready
-  const ready = sub.ready() && sub2.ready();
+  const ready = sub.ready() && sub2.ready() && sub3.ready();
   // Get the profile documents
   const profile = Profiles.collection.find().fetch()[0];
   const item = Item.collection.find().fetch();
+  const note = Notes.collection.find().fetch();
   // If subsciption went through successfully we can return ready
   return {
     item,
     profile,
+    note,
     ready,
   };
 })(ProfilePage);
