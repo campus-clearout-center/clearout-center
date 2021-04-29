@@ -21,7 +21,7 @@ class Reports extends React.Component {
           {this.props.reports.reason}
         </Card.Content>
         <Card.Content>
-          <Button as={Link} to={`/deletereport/${this.props.reports._id}`} icon labelPosition='left' color='red'>
+          <Button as={Link} to={`/deletereport/${this.props.reports._id}`} icon labelPosition='left' color='red' id='delete-report-button'>
             <Icon name='exclamation triangle' />
             Delete Report
           </Button>

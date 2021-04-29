@@ -13,17 +13,18 @@ import { Admin } from '../../api/admin/Admin';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
+  address: String,
   itemName: String,
   image: String,
-  reason: String,
+  price: String,
+  description: String,
+  label: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-class DeleteReport extends React.Component {
+class DeleteItem extends React.Component {
 
   constructor(props) {
     super(props);
@@ -37,7 +38,7 @@ class DeleteReport extends React.Component {
   // On submit, insert the data.
   delete(data) {
     const { _id } = data;
-    Admin.collection.remove(_id,
+    Item.collection.remove(_id,
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -50,23 +51,24 @@ class DeleteReport extends React.Component {
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/reportlist' } };
+    const { from } = this.props.location.state || { from: { pathname: '/admin' } };
     // if correct authentication, redirect to page instead of login screen
     if (this.state.redirectToReferer) {
       return <Redirect to={from}/>;
     }
     return (
-      <Grid className='borderless middlemenu' container centered id='delete-report'>
+      <Grid className='borderless middlemenu' container centered id='delete-item'>
         <Grid.Column>
-          <Header as="h2" textAlign="center" inverted>Are you sure you want to delete this report?</Header>
+          <Header as="h2" textAlign="center" inverted>Are you sure you want to delete this item?</Header>
           <AutoForm schema={bridge} onSubmit={data => this.delete(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='firstName' disabled/>
-              <TextField name='lastName' disabled/>
               <TextField name='itemName' disabled/>
+              <TextField name='address' disabled/>
               <TextField name='image' disabled/>
-              <TextField name='reason' disabled/>
-              <SubmitField value='Delete' id='report-delete'/>
+              <TextField name='price' disabled/>
+              <TextField name='description' disabled/>
+              <TextField name='label' disabled/>
+              <SubmitField value='Delete' id='item-delete'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>
@@ -76,7 +78,7 @@ class DeleteReport extends React.Component {
   }
 }
 
-DeleteReport.propTypes = {
+DeleteItem.propTypes = {
   doc: PropTypes.object,
   location: PropTypes.object,
   model: PropTypes.object,
@@ -88,16 +90,16 @@ export default withTracker(({ match }) => {
   const documentId = match.params._id;
   // Get access to Stuff documents.
   const subscription2 = Meteor.subscribe(Admin.adminPublicationName);
-  const subscription = Meteor.subscribe(Item.userPublicationName);
+  const subscription = Meteor.subscribe(Item.adminPublicationName);
   // const subscription2 = Meteor.subscribe(Admin.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready() && subscription2.ready();
   // Get the document
-  const doc = Admin.collection.findOne(documentId);
-  // const doc = Item.collection.findOne(documentId);
+  // const doc = Admin.collection.findOne(documentId);
+  const doc = Item.collection.findOne(documentId);
   return {
     // doc,
     doc,
     ready,
   };
-})(DeleteReport);
+})(DeleteItem);
