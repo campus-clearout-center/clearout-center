@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, Card, Label, Button } from 'semantic-ui-react';
+import { Image, Card, Label, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ItemAdmin extends React.Component {
@@ -28,6 +28,12 @@ class ItemAdmin extends React.Component {
         </Card.Content>
         <Card.Content extra>
           <p>{this.props.items.owner}</p>
+        </Card.Content>
+        <Card.Content>
+          <Button as={Link} to={`/deleteitem/${this.props.items._id}`} icon labelPosition='left' color='red' id='delete-item-button'>
+            <Icon name='exclamation triangle' />
+            Delete Item
+          </Button>
         </Card.Content>
       </Card>
     );

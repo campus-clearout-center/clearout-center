@@ -24,6 +24,15 @@ class ListitemsPage {
   async pressOffer(testController) {
     await testController.click('#offer');
   }
+
+  async pressDeleteItem(testController) {
+    await testController.click('#delete-item-button');
+  }
+
+  async hasNoCard(testController) {
+    const cardCount = Selector('div.ui.centered.card').count;
+    await testController.expect(cardCount).lt(1);
+  }
 }
 
 export const listItemsPage = new ListitemsPage();
