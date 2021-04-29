@@ -23,6 +23,8 @@ import ListBooks from '../pages/ListBooks';
 import ListServices from '../pages/ListServices';
 import ListMisc from '../pages/ListMisc';
 import OffersPage from '../pages/OffersPage';
+import DeleteReport from '../pages/DeleteReport';
+import DeleteItem from '../pages/DeleteItem';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -48,6 +50,8 @@ class App extends React.Component {
             <ProtectedRoute path="/offer/:_id" component={OffersPage}/>
             <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
             <ProtectedRoute path="/report/:_id" component={ReportUser}/>
+            <ProtectedRoute path="/deletereport/:_id" component={DeleteReport}/>
+            <ProtectedRoute path="/deleteitem/:_id" component={DeleteItem}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>

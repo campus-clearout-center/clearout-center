@@ -13,6 +13,8 @@ import { editprofilePage } from './editprofile.page';
 import { offerItemPage } from './offeritem.page';
 import { editItemPage } from './edititem.page';
 import { addItemPage } from './additem.page';
+import { deleteReportPage } from './deletereport.page';
+import { deleteProductPage } from './deleteproduct.page';
 
 /* global fixture:false, test:false */
 
@@ -80,13 +82,22 @@ test('Test if report page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test if the report exists on the admin page', async (testController) => {
+test('Test if the report exists on the admin page. Make it also delete the report and the item', async (testController) => {
   await landingPage.gotoSigninPage(testController);
   await signinPage.signin(testController, admincreds.username, admincreds.password);
   await navBar.isLoggedIn(testController, admincreds.username);
   await navBar.gotoReportList(testController);
   await reportListPage.isDisplayed(testController);
   await reportListPage.hasCard(testController);
+  await reportListPage.pressDeleteReport(testController);
+  await deleteReportPage.pressDelete(testController);
+  await reportListPage.hasNoCard(testController);
+  await navBar.gotoAnItem(testController);
+  await listItemsPage.isDisplayed(testController);
+  await listItemsPage.pressDeleteItem(testController);
+  await deleteProductPage.pressDelete(testController);
+  await navBar.gotoAnItem(testController);
+  await listItemsPage.hasNoCard(testController);
 });
 
 test('Test if you can add an item', async (testController) => {
