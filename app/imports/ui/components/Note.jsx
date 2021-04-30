@@ -1,5 +1,5 @@
 import React from 'react';
-import { Feed, Rating } from 'semantic-ui-react';
+import { Feed, Rating, Container } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -7,13 +7,21 @@ import { withRouter } from 'react-router-dom';
 class Note extends React.Component {
   render() {
     return (
-      <Feed.Event >
-        <Feed.Content>
-          <Feed.Summary>
-            {this.props.note.note}
-          </Feed.Summary>
-        </Feed.Content>
-      </Feed.Event>
+      <Container>
+        <Feed.Event>
+          <Feed.Content>
+            <Feed.Meta>
+              <Rating maxRating={5} clearable/>
+            </Feed.Meta>
+            <Feed.User>
+              {this.props.note.owner}
+            </Feed.User>
+            <Feed.Extra>
+              {this.props.note.note}
+            </Feed.Extra>
+          </Feed.Content>
+        </Feed.Event>
+      </Container>
     );
   }
 }

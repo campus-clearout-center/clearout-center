@@ -54,9 +54,10 @@ class ProfilePage extends React.Component {
               </Table>
             </Grid.Column>
           </Grid>
-          <Feed>
+          <Feed align={'center'}>
+            <h2>Reviews</h2>
             <Feed.Summary>
-              {/*{this.props.notes.map((note, index) => <Note key={index} note={note}/>)}*/}
+              {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
             </Feed.Summary>
             <AddNote owner={this.props.profile.owner} contactId={this.props.profile._id}/>
           </Feed>
@@ -90,12 +91,12 @@ export default withTracker(({ match }) => {
   // Get the profile documents
   const profile = Profiles.collection.findOne(documentId);
   const item = Item.collection.find().fetch();
-  const note = Notes.collection.find({}).fetch();
+  const notes = Notes.collection.find({}).fetch();
   // If subsciption went through successfully we can return ready
   return {
     item,
     profile,
-    note,
+    notes,
     ready,
     currentUser: Meteor.user() ? Meteor.user().username : '',
   };

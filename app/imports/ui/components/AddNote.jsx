@@ -1,13 +1,11 @@
 import React from 'react';
 import { Grid, Segment, Header, Rating } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SubmitField, TextField, SelectField, NumField, HiddenField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SubmitField, TextField, HiddenField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
-import SimpleSchema from 'simpl-schema';
 import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Item } from '../../api/item/Item';
 import { Profiles } from '../../api/profile/Profiles';
 import { Notes } from '../../api/note/Notes';
 
@@ -45,7 +43,7 @@ class AddNote extends React.Component {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <Segment>
-                <Rating maxRating={5} clearable />
+                <Rating maxRating={5}/>
                 <TextField label="Add a review" name='note'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
