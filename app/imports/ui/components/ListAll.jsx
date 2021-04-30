@@ -3,6 +3,8 @@ import { Image, Card, Label, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
+import { Meteor } from 'meteor/meteor';
+import { Roles } from 'meteor/alanning:roles';
 
 function getOwnerId(owner) {
   const username = Profiles.collection.findOne({ owner });
@@ -10,7 +12,7 @@ function getOwnerId(owner) {
 }
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
-class ItemAdmin extends React.Component {
+class ListAll extends React.Component {
   render() {
     const ownerid = getOwnerId(this.props.items.owner);
     return (
@@ -36,22 +38,26 @@ class ItemAdmin extends React.Component {
         <Card.Content extra>
           <p>{this.props.items.owner}</p>
         </Card.Content>
-        <Card.Content>
-          <Button as={Link} to={`/deleteitem/${this.props.items._id}`} icon labelPosition='left' color='red' id='delete-item-button'>
-            <Icon name='exclamation triangle' />
+        {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+          [
+            <Card.Content key='delete-item-button'>
+              <Button as={Link} to={`/deleteitem/${this.props.items._id}`} icon labelPosition='left' color='red' id='delete-item-button'>
+                <Icon name='exclamation triangle' />
             Delete Item
-          </Button>
-        </Card.Content>
+              </Button>
+            </Card.Content>,
+          ]
+        ) : ''}
       </Card>
     );
   }
 }
 
 // Require a document to be passed to this component.
-ItemAdmin.propTypes = {
+ListAll.propTypes = {
   items: PropTypes.object.isRequired,
   profiles: PropTypes.array,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.
-export default withRouter(ItemAdmin);
+export default withRouter(ListAll);

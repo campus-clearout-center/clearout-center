@@ -15,6 +15,7 @@ import { editItemPage } from './edititem.page';
 import { addItemPage } from './additem.page';
 import { deleteReportPage } from './deletereport.page';
 import { deleteProductPage } from './deleteproduct.page';
+import { listAllItemPage } from './listall.page';
 
 /* global fixture:false, test:false */
 
@@ -67,6 +68,15 @@ test('Test that the admin page works', async (testController) => {
   await navBar.isLoggedIn(testController, admincreds.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+
+test('Test that the user can see the list of all the items', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoListAll(testController);
+  await listAllItemPage.isDisplayed(testController);
+  await listAllItemPage.hasAllCards(testController);
 });
 
 test('Test if report page works', async (testController) => {

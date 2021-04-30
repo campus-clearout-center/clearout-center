@@ -10,6 +10,7 @@ import Landing from '../pages/Landing';
 import ProfilePage from '../pages/ProfilePage';
 import MyProfilePage from '../pages/MyProfilePage';
 import ListItemsAdmin from '../pages/ListItemsAdmin';
+import ListAllItems from '../pages/ListAllItems';
 import AddItem from '../pages/AddItem';
 import EditItem from '../pages/EditItem';
 import EditProfile from '../pages/EditProfile';
@@ -42,6 +43,7 @@ class App extends React.Component {
             <ProtectedRoute path="/profile/:_id" component={ProfilePage}/>
             <ProtectedRoute path="/profile/" component={MyProfilePage}/>
             <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
+            <ProtectedRoute path="/listall" component={ListAllItems}/>
             <AdminProtectedRoute path="/reportlist" component={ReportList}/>
             <ProtectedRoute path="/list" component={ListItems}/>
             <ProtectedRoute path="/books" component={ListBooks}/>
