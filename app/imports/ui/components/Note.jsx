@@ -10,11 +10,8 @@ class Note extends React.Component {
       <Feed.Event >
         <Feed.Content>
           <Feed.Summary>
-            <Rating maxRating={5} clearable />
-          </Feed.Summary>
-          <Feed.Extra>
             {this.props.note.note}
-          </Feed.Extra>
+          </Feed.Summary>
         </Feed.Content>
       </Feed.Event>
     );

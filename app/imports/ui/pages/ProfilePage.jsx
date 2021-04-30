@@ -52,6 +52,7 @@ class ProfilePage extends React.Component {
             </Grid.Column>
           </Grid>
           <Feed>
+            {this.props.notes.map((note, index) => <Note key={index} note={note}/>)}
             <AddNote owner={this.props.profile.owner} contactId={this.props.profile._id}/>
           </Feed>
         </Segment>
