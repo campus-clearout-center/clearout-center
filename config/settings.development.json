@@ -21,18 +21,18 @@
       "firstName": "The",
       "lastName": "Admin",
       "bio": "I am the admin of the CCC",
-      "picture":"",
+      "picture":"https://s.abcnews.com/images/US/Gty_Hacker_Group_Anonymous_er_160318_16x9t_992.jpg",
       "role": "admin",
       "owner": "admin@foo.com"
     },
     {
-      "username": "janedoe",
+      "username": "janesmith",
       "email": "jane@foo.com",
       "firstName": "Jane",
-      "lastName": "Doe",
+      "lastName": "Smith",
       "bio": "I am looking to buy something",
       "role": "",
-      "picture":"",
+      "picture":"https://6.vikiplatform.com/image/a11230e2d98d4a73825a4c10c8c6feb0.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1",
       "owner": "jane@foo.com"
     }
   ],
@@ -85,7 +85,18 @@
       "price": 30.00,
       "description": "Partially used",
       "label": "Miscellaneous",
-      "owner": "jane@foo.com" }
+      "owner": "jane@foo.com" },
+    {
+      "firstName": "The",
+      "lastName": "Admin",
+      "address": "Tomato Town",
+      "itemName": "Free V Bucks",
+      "image": "https://i.ytimg.com/vi/2A1drzZQtuo/maxresdefault.jpg",
+      "price": 0,
+      "description": "Never Opened",
+      "label": "Miscellaneous",
+      "owner": "admin@foo.com"
+    }
   ],
 
   "defaultAdmin": [{
