@@ -8,7 +8,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ProfilePage from '../pages/ProfilePage';
-import ListItemsAdmin from '../pages/ListItemsAdmin';
+import ListAllItems from '../pages/ListAllItems';
 import AddItem from '../pages/AddItem';
 import EditItem from '../pages/EditItem';
 import EditProfile from '../pages/EditProfile';
@@ -39,7 +39,7 @@ class App extends React.Component {
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/profile" component={ProfilePage}/>
-            <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
+            <ProtectedRoute path="/listall" component={ListAllItems}/>
             <AdminProtectedRoute path="/reportlist" component={ReportList}/>
             <ProtectedRoute path="/list" component={ListItems}/>
             <ProtectedRoute path="/books" component={ListBooks}/>
