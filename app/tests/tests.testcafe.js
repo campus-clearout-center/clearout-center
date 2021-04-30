@@ -16,6 +16,7 @@ import { addItemPage } from './additem.page';
 import { deleteReportPage } from './deletereport.page';
 import { deleteProductPage } from './deleteproduct.page';
 import { listAllItemPage } from './listall.page';
+import { myprofilePage } from './myprofile.page';
 
 /* global fixture:false, test:false */
 
@@ -39,7 +40,7 @@ test('Test that signup works', async (testController) => {
   const newUser = `user-${new Date().getTime()}@hawaii.edu`;
   await landingPage.gotoSignupPage(testController);
   await signupPage.signupUser(testController, newcred.firstName, newcred.lastName, newUser, newcred.password);
-  await profilePage.isDisplayed(testController);
+  await myprofilePage.isDisplayed(testController);
   await navBar.isLoggedIn(testController, newUser);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
@@ -58,8 +59,19 @@ test('Test the Profile Page', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoProfilePage(testController);
+  await myprofilePage.isDisplayed(testController);
+  await myprofilePage.hasTable(testController);
+});
+
+test('Test view other profiles feature', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoListAll(testController);
+  await listAllItemPage.testProfile(testController);
   await profilePage.isDisplayed(testController);
-  await profilePage.hasTable(testController);
+  await navBar.gotoAppliances(testController);
+  await listItemsPage.testProfile(testController);
 });
 
 test('Test that the admin page works', async (testController) => {
@@ -156,7 +168,7 @@ test('Test if you can offer an item', async (testController) => {
   await offerItemPage.isDisplayed(testController);
   await offerItemPage.pressPurchase(testController);
   await navBar.gotoProfilePage(testController);
-  await profilePage.isDisplayed(testController);
+  await myprofilePage.isDisplayed(testController);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);

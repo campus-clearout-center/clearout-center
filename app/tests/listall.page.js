@@ -16,6 +16,10 @@ class ListallitemPage {
     await testController.expect(cardCount).gte(4);
   }
 
+  async testProfile(testController) {
+    await testController.click('#profile-link');
+  }
+
 }
 
 export const listAllItemPage = new ListallitemPage();

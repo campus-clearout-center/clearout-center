@@ -1,13 +1,19 @@
 import { Selector } from 'testcafe';
 
-class ProfilePage {
+class MyProfilePage {
   constructor() {
-    this.pageId = '#profile-page';
+    this.pageId = '#myprofile-page';
     this.pageSelector = Selector(this.pageId);
   }
 
   /** Checks that this page is currently displayed. */
   async isDisplayed(testController) {
+    await testController.expect(this.pageSelector.exists).ok();
+  }
+
+  async hasTable(testController) {
+    const rowCount = Selector('tr').count;
+    await testController.expect(rowCount).eql(3);
     await testController.expect(this.pageSelector.exists).ok();
   }
 
@@ -17,4 +23,4 @@ class ProfilePage {
 
 }
 
-export const profilePage = new ProfilePage();
+export const myprofilePage = new MyProfilePage();
