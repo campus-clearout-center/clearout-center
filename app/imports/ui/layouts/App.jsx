@@ -8,7 +8,8 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ProfilePage from '../pages/ProfilePage';
-import ListItemsAdmin from '../pages/ListItemsAdmin';
+import MyProfilePage from '../pages/MyProfilePage';
+import ListAllItems from '../pages/ListAllItems';
 import AddItem from '../pages/AddItem';
 import EditItem from '../pages/EditItem';
 import EditProfile from '../pages/EditProfile';
@@ -23,6 +24,8 @@ import ListBooks from '../pages/ListBooks';
 import ListServices from '../pages/ListServices';
 import ListMisc from '../pages/ListMisc';
 import OffersPage from '../pages/OffersPage';
+import DeleteReport from '../pages/DeleteReport';
+import DeleteItem from '../pages/DeleteItem';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -36,8 +39,9 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
-            <ProtectedRoute path="/profile" component={ProfilePage}/>
-            <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
+            <ProtectedRoute path="/profile/:_id" component={ProfilePage}/>
+            <ProtectedRoute path="/profile/" component={MyProfilePage}/>
+            <ProtectedRoute path="/listall" component={ListAllItems}/>
             <AdminProtectedRoute path="/reportlist" component={ReportList}/>
             <ProtectedRoute path="/list" component={ListItems}/>
             <ProtectedRoute path="/books" component={ListBooks}/>
@@ -48,6 +52,8 @@ class App extends React.Component {
             <ProtectedRoute path="/offer/:_id" component={OffersPage}/>
             <ProtectedRoute path="/edit/:_id" component={EditProfile}/>
             <ProtectedRoute path="/report/:_id" component={ReportUser}/>
+            <ProtectedRoute path="/deletereport/:_id" component={DeleteReport}/>
+            <ProtectedRoute path="/deleteitem/:_id" component={DeleteItem}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>

@@ -1,11 +1,11 @@
 import { Selector } from 'testcafe';
 
-class ReportitemPage {
+class DeletereportPage {
 
   /* checks list item of appliance */
 
   constructor() {
-    this.pageId = '#report-item';
+    this.pageId = '#delete-report';
     this.pageSelector = Selector(this.pageId);
   }
 
@@ -13,12 +13,11 @@ class ReportitemPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  async typeInReport(testController, report) {
+  async pressDelete(testController) {
     await this.isDisplayed(testController);
-    await testController.typeText('#report-area', report);
-    await testController.click('#report-submit');
+    await testController.click('#report-delete');
     await testController.click(Selector('.swal-button--confirm'));
   }
 }
 
-export const reportItemPage = new ReportitemPage();
+export const deleteReportPage = new DeletereportPage();

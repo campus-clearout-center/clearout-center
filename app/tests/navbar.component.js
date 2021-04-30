@@ -85,6 +85,10 @@ class NavBar {
     await testController.click('#catalog');
     await testController.click('#misc');
   }
+
+  async gotoListAll(testController) {
+    await testController.click('#listall');
+  }
 }
 
 export const navBar = new NavBar();

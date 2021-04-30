@@ -11,12 +11,14 @@
   background: #147d30;
   box-shadow: none;
   border: none;
+  margin-bottom: 0;
 }
 
 .ui.borderless.middlemenu.grid {
-  background: red;
+  background: #c72a2a;
   box-shadow: none;
   border: none;
+  margin-top: 25px;
 }
 
 .grad-background {
@@ -34,6 +36,19 @@
 
 .footer-background {
   color: white;
+  border: none;
   padding-top: 20px;
   text-align: center;
+}
+
+.ui.container {
+  margin-top: 25px;
+}
+
+.ui.container.fluid {
+  margin-top: 0;
+}
+
+.ui.grid.container {
+  margin-top: 25px;
 }

@@ -4,11 +4,8 @@ import React from 'react';
 class Footer extends React.Component {
   render() {
     return (
-      <footer>
-        <div className="footer-background">
-          <hr />
-          <p>Contact Us</p>
-        </div>
+      <footer className="footer-background">
+        <p>Contact Us</p>
       </footer>
     );
   }

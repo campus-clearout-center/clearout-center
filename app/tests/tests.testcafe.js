@@ -13,6 +13,10 @@ import { editprofilePage } from './editprofile.page';
 import { offerItemPage } from './offeritem.page';
 import { editItemPage } from './edititem.page';
 import { addItemPage } from './additem.page';
+import { deleteReportPage } from './deletereport.page';
+import { deleteProductPage } from './deleteproduct.page';
+import { listAllItemPage } from './listall.page';
+import { myprofilePage } from './myprofile.page';
 
 /* global fixture:false, test:false */
 
@@ -36,7 +40,7 @@ test('Test that signup works', async (testController) => {
   const newUser = `user-${new Date().getTime()}@hawaii.edu`;
   await landingPage.gotoSignupPage(testController);
   await signupPage.signupUser(testController, newcred.firstName, newcred.lastName, newUser, newcred.password);
-  await profilePage.isDisplayed(testController);
+  await myprofilePage.isDisplayed(testController);
   await navBar.isLoggedIn(testController, newUser);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
@@ -55,8 +59,19 @@ test('Test the Profile Page', async (testController) => {
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoProfilePage(testController);
+  await myprofilePage.isDisplayed(testController);
+  await myprofilePage.hasTable(testController);
+});
+
+test('Test view other profiles feature', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoListAll(testController);
+  await listAllItemPage.testProfile(testController);
   await profilePage.isDisplayed(testController);
-  await profilePage.hasTable(testController);
+  await navBar.gotoAppliances(testController);
+  await listItemsPage.testProfile(testController);
 });
 
 test('Test that the admin page works', async (testController) => {
@@ -65,6 +80,15 @@ test('Test that the admin page works', async (testController) => {
   await navBar.isLoggedIn(testController, admincreds.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
+});
+
+test('Test that the user can see the list of all the items', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
+  await signinPage.signin(testController, credentials.username, credentials.password);
+  await navBar.isLoggedIn(testController, credentials.username);
+  await navBar.gotoListAll(testController);
+  await listAllItemPage.isDisplayed(testController);
+  await listAllItemPage.hasAllCards(testController);
 });
 
 test('Test if report page works', async (testController) => {
@@ -80,13 +104,22 @@ test('Test if report page works', async (testController) => {
   await signoutPage.isDisplayed(testController);
 });
 
-test('Test if the report exists on the admin page', async (testController) => {
+test('Test if the report exists on the admin page. Make it also delete the report and the item', async (testController) => {
   await landingPage.gotoSigninPage(testController);
   await signinPage.signin(testController, admincreds.username, admincreds.password);
   await navBar.isLoggedIn(testController, admincreds.username);
   await navBar.gotoReportList(testController);
   await reportListPage.isDisplayed(testController);
   await reportListPage.hasCard(testController);
+  await reportListPage.pressDeleteReport(testController);
+  await deleteReportPage.pressDelete(testController);
+  await reportListPage.hasNoCard(testController);
+  await navBar.gotoAnItem(testController);
+  await listItemsPage.isDisplayed(testController);
+  await listItemsPage.pressDeleteItem(testController);
+  await deleteProductPage.pressDelete(testController);
+  await navBar.gotoAnItem(testController);
+  await listItemsPage.hasNoCard(testController);
 });
 
 test('Test if you can add an item', async (testController) => {
@@ -135,7 +168,7 @@ test('Test if you can offer an item', async (testController) => {
   await offerItemPage.isDisplayed(testController);
   await offerItemPage.pressPurchase(testController);
   await navBar.gotoProfilePage(testController);
-  await profilePage.isDisplayed(testController);
+  await myprofilePage.isDisplayed(testController);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);

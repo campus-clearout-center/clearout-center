@@ -10,7 +10,7 @@ import { Roles } from 'meteor/alanning:roles';
 class NavBar extends React.Component {
   render() {
     return (
-      <Menu className='borderless topmenu' attached="top" borderless inverted>
+      <Menu className='borderless topmenu' fluid inverted>
         <div className='left-space'><Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Image src='https://cdn.discordapp.com/attachments/827753538145746977/831292462563328000/New_Project_1.png'
             size='small'/>
@@ -25,11 +25,11 @@ class NavBar extends React.Component {
                 <Dropdown.Item as={NavLink} activeClassName="active" exact to="/misc" key='misc' id={'misc'}>Miscellaneous</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>,
+            <Menu.Item as={NavLink} activeClassName="active" exact to="/listall" key='listall' id='listall'>All items in store</Menu.Item>,
           ]
         ) : ''}
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           [
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
             <Menu.Item as={NavLink} activeClassName="active" exact to="/reportlist" key='report list' id='reportlist-page'>Report List</Menu.Item>,
           ]
         ) : ''}
@@ -37,7 +37,7 @@ class NavBar extends React.Component {
           {this.props.currentUser === '' ? ('') : (
             <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
               <Dropdown.Menu>
-                <Dropdown.Item id="navbar-profile" icon="user" text="Profile" as={NavLink} exact to="/profile"/>
+                <Dropdown.Item id="navbar-profile" icon="user" text="Profile" as={NavLink} exact to={'/profile'}/>
                 <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
               </Dropdown.Menu>
             </Dropdown>
