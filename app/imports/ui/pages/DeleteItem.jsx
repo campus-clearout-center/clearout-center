@@ -7,51 +7,68 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Redirect } from 'react-router-dom';
 import { Item } from '../../api/item/Item';
 import { Admin } from '../../api/admin/Admin';
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  firstName: String,
-  lastName: String,
+  address: String,
   itemName: String,
   image: String,
-  reason: String,
+  price: String,
+  description: String,
+  label: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
 
 /** Renders the Page for adding a document. */
-class ReportUser extends React.Component {
+class DeleteItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+  }
+
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+  }
 
   // On submit, insert the data.
-  submit(data) {
-    const { firstName, lastName, itemName, image, reason } = data;
-    const owner = Meteor.user().username;
-    Admin.collection.insert({ firstName, lastName, itemName, image, reason, owner },
+  delete(data) {
+    const { _id } = data;
+    Item.collection.remove(_id,
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Report sent successfully', 'success');
+          swal('Success', 'Report successfully deleted', 'success');
+          this.setState({ error: '', redirectToReferer: true });
         }
       });
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/admin' } };
+    // if correct authentication, redirect to page instead of login screen
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
     return (
-      <Grid className='borderless middlemenu' container centered id='report-item'>
+      <Grid className='borderless middlemenu' container centered id='delete-item'>
         <Grid.Column>
-          <Header as="h2" textAlign="center" inverted>Report the user</Header>
-          <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
+          <Header as="h2" textAlign="center" inverted>Are you sure you want to delete this item?</Header>
+          <AutoForm schema={bridge} onSubmit={data => this.delete(data)} model={this.props.doc}>
             <Segment>
-              <TextField name='firstName' disabled/>
-              <TextField name='lastName' disabled/>
               <TextField name='itemName' disabled/>
+              <TextField name='address' disabled/>
               <TextField name='image' disabled/>
-              <TextField name='reason' id='report-area'/>
-              <SubmitField value='Submit' id='report-submit'/>
+              <TextField name='price' disabled/>
+              <TextField name='description' disabled/>
+              <TextField name='label' disabled/>
+              <SubmitField value='Delete' id='item-delete'/>
               <ErrorsField/>
             </Segment>
           </AutoForm>
@@ -61,8 +78,9 @@ class ReportUser extends React.Component {
   }
 }
 
-ReportUser.propTypes = {
+DeleteItem.propTypes = {
   doc: PropTypes.object,
+  location: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };
@@ -71,17 +89,17 @@ export default withTracker(({ match }) => {
   // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
   const documentId = match.params._id;
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Item.userPublicationName);
+  const subscription2 = Meteor.subscribe(Admin.adminPublicationName);
+  const subscription = Meteor.subscribe(Item.adminPublicationName);
   // const subscription2 = Meteor.subscribe(Admin.userPublicationName);
-  const subscription2 = Meteor.subscribe(Admin.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready() && subscription2.ready();
   // Get the document
+  // const doc = Admin.collection.findOne(documentId);
   const doc = Item.collection.findOne(documentId);
-  // const doc2 = Admin.collection.findOne(documentId);
   return {
+    // doc,
     doc,
-    // doc2,
     ready,
   };
-})(ReportUser);
+})(DeleteItem);

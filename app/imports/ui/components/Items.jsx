@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Profiles } from '../../api/profile/Profiles';
+import { Roles } from 'meteor/alanning:roles';
 
 function getOwnerId(owner) {
   const username = Profiles.collection.findOne({ owner });
@@ -42,10 +43,18 @@ class Items extends React.Component {
         ) : ('')
         }
         <Card.Content extra>
-          <Button as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red' id='report-button'>
+          <Button size='mini' as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red' id='report-button'>
             <Icon name='exclamation triangle' />
             Report Item
           </Button>
+          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+            [
+              <Button size='mini' as={Link} to={`/deleteitem/${this.props.items._id}`} icon labelPosition='left' color='red' id='delete-item-button' key='delete-item-button'>
+                <Icon name='exclamation triangle' />
+            Delete Item
+              </Button>,
+            ]
+          ) : ''}
         </Card.Content>
       </Card>
     );

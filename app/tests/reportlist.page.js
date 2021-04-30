@@ -17,6 +17,15 @@ class ReportlistPage {
     const cardCount = Selector('div.ui.centered.card').count;
     await testController.expect(cardCount).gte(1);
   }
+
+  async pressDeleteReport(testController) {
+    await testController.click('#delete-report-button');
+  }
+
+  async hasNoCard(testController) {
+    const cardCount = Selector('div.ui.centered.card').count;
+    await testController.expect(cardCount).lt(1);
+  }
 }
 
 export const reportListPage = new ReportlistPage();
