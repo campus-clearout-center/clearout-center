@@ -5,6 +5,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import ItemsAdmin from '../components/ItemsAdmin';
 import { Item } from '../../api/item/Item';
+import { Profiles } from '../../api/profile/Profiles';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
 class ListItemsAdmin extends React.Component {
@@ -37,11 +38,14 @@ ListItemsAdmin.propTypes = {
 export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Meteor.subscribe(Item.adminPublicationName);
+  const subscription2 = Meteor.subscribe(Profiles.pubPublicationName);
   // Determine if the subscription is ready
-  const ready = subscription.ready();
+  const ready = subscription.ready() && subscription2.ready();
   // Get the Stuff documents
   const item = Item.collection.find({}).fetch();
+  const profiles = Profiles.collection.find({}).fetch();
   return {
+    profiles,
     item,
     ready,
   };
