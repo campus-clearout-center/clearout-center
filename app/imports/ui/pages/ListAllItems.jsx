@@ -3,11 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Card, Header, Loader } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
-import ItemsAdmin from '../components/ItemsAdmin';
+import ListAll from '../components/ListAll';
 import { Item } from '../../api/item/Item';
 
 /** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-class ListItemsAdmin extends React.Component {
+class ListAllItems extends React.Component {
 
   // If the subscription(s) have been received, render the page, otherwise show a loading icon.
   render() {
@@ -17,10 +17,10 @@ class ListItemsAdmin extends React.Component {
   // Render the page once subscriptions have been received.
   renderPage() {
     return (
-      <Container>
-        <Header as="h2" textAlign="center" inverted>List Items Admin</Header>
+      <Container id='listallitemspage'>
+        <Header as="h2" textAlign="center" inverted>List All Items</Header>
         <Card.Group>
-          {this.props.item.map((item, index) => <ItemsAdmin key={index} items={item}/>)}
+          {this.props.item.map((item, index) => <ListAll key={index} items={item}/>)}
         </Card.Group>
       </Container>
     );
@@ -28,7 +28,7 @@ class ListItemsAdmin extends React.Component {
 }
 
 // Require an array of Stuff documents in the props.
-ListItemsAdmin.propTypes = {
+ListAllItems.propTypes = {
   item: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
@@ -36,7 +36,7 @@ ListItemsAdmin.propTypes = {
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Meteor.subscribe(Item.adminPublicationName);
+  const subscription = Meteor.subscribe(Item.userPublicationName);
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents
@@ -45,4 +45,4 @@ export default withTracker(() => {
     item,
     ready,
   };
-})(ListItemsAdmin);
+})(ListAllItems);
