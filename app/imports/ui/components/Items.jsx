@@ -5,17 +5,24 @@ import { withRouter, Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { Profiles } from '../../api/profile/Profiles';
+
+function getOwnerId(owner) {
+  const username = Profiles.collection.findOne({ owner });
+  return username._id;
+}
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class Items extends React.Component {
   render() {
+    const ownerid = getOwnerId(this.props.items.owner);
     return (
       <Card centered>
         <Image src={this.props.items.image} size='small' centered />
         <Card.Content>
           <Card.Header>{this.props.items.itemName}</Card.Header>
           <Card.Meta>
-            <span>{this.props.items.firstName} {this.props.items.lastName}</span>
+            <Link id='profile-link'to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
           </Card.Meta>
           <Card.Description>
             {this.props.items.description}
@@ -63,6 +70,7 @@ class Items extends React.Component {
 Items.propTypes = {
   items: PropTypes.object.isRequired,
   currentUser: PropTypes.string.isRequired,
+  profiles: PropTypes.array,
 };
 
 const ItemsContainer = withTracker(() => ({

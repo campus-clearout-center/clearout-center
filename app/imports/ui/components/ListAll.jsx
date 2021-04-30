@@ -4,17 +4,24 @@ import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { Profiles } from '../../api/profile/Profiles';
+
+function getOwnerId(owner) {
+  const username = Profiles.collection.findOne({ owner });
+  return username._id;
+}
 
 /** Renders a single row in the List Stuff table. See pages/ListStuff.jsx. */
 class ListAll extends React.Component {
   render() {
+    const ownerid = getOwnerId(this.props.items.owner);
     return (
       <Card centered>
         <Image src={this.props.items.image} size='small' centered />
         <Card.Content>
           <Card.Header>{this.props.items.itemName}</Card.Header>
           <Card.Meta>
-            <span>{this.props.items.firstName} {this.props.items.lastName}</span>
+            <Link id='profile-link' to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
           </Card.Meta>
           <Card.Description>
             {this.props.items.description}
@@ -27,9 +34,6 @@ class ListAll extends React.Component {
           <Label>
             {this.props.items.label}
           </Label>
-        </Card.Content>
-        <Card.Content extra>
-          <p>{this.props.items.owner}</p>
         </Card.Content>
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           [
@@ -49,6 +53,7 @@ class ListAll extends React.Component {
 // Require a document to be passed to this component.
 ListAll.propTypes = {
   items: PropTypes.object.isRequired,
+  profiles: PropTypes.array,
 };
 
 // Wrap this component in withRouter since we use the <Link> React Router element.

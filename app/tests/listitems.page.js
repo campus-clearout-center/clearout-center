@@ -33,6 +33,10 @@ class ListitemsPage {
     const cardCount = Selector('div.ui.centered.card').count;
     await testController.expect(cardCount).lt(1);
   }
+
+  async testProfile(testController) {
+    await testController.click('#profile-link');
+  }
 }
 
 export const listItemsPage = new ListitemsPage();
