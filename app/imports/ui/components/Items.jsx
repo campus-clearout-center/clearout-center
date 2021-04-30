@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { Profiles } from '../../api/profile/Profiles';
 import { Roles } from 'meteor/alanning:roles';
+import { Profiles } from '../../api/profile/Profiles';
 
 function getOwnerId(owner) {
   const username = Profiles.collection.findOne({ owner });
@@ -22,7 +22,7 @@ class Items extends React.Component {
         <Card.Content>
           <Card.Header>{this.props.items.itemName}</Card.Header>
           <Card.Meta>
-            <Link to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
+            <Link id='profile-link'to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
           </Card.Meta>
           <Card.Description>
             {this.props.items.description}

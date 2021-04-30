@@ -20,7 +20,7 @@ class ProfilePage extends React.Component {
     return (
       <Container>
         <Segment>
-          <Header as='h1' textAlign="center" id='profile-page'>Profile Page</Header>
+          <Header as='h1' textAlign="center" id='myprofile-page'>Profile Page</Header>
           <Grid columns={2}>
             <Grid.Column width={6}>
               <Link id={'edit-profile'} to={`/edit/${this.props.profile._id}`}><Icon name='pencil alternate'/>Edit</Link>

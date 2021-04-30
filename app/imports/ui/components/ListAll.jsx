@@ -2,9 +2,9 @@ import React from 'react';
 import { Image, Card, Label, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import { Profiles } from '../../api/profile/Profiles';
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
+import { Profiles } from '../../api/profile/Profiles';
 
 function getOwnerId(owner) {
   const username = Profiles.collection.findOne({ owner });
@@ -21,7 +21,7 @@ class ListAll extends React.Component {
         <Card.Content>
           <Card.Header>{this.props.items.itemName}</Card.Header>
           <Card.Meta>
-            <Link to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
+            <Link id='profile-link' to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
           </Card.Meta>
           <Card.Description>
             {this.props.items.description}
@@ -34,9 +34,6 @@ class ListAll extends React.Component {
           <Label>
             {this.props.items.label}
           </Label>
-        </Card.Content>
-        <Card.Content extra>
-          <p>{this.props.items.owner}</p>
         </Card.Content>
         {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
           [

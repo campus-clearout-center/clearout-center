@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Header, Container, Loader, Segment, Grid, Image, Divider, Icon, Table, Button } from 'semantic-ui-react';
+import { Header, Container, Loader, Segment, Grid, Image, Divider, Icon, Table } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Profiles } from '../../api/profile/Profiles';
 import { Item } from '../../api/item/Item';
 import ListItem from '../components/ListItem';
-import { Link } from 'react-router-dom';
 
 class ProfilePage extends React.Component {
 
@@ -23,6 +23,10 @@ class ProfilePage extends React.Component {
           <Header as='h1' textAlign="center" id='profile-page'>Profile Page</Header>
           <Grid columns={2}>
             <Grid.Column width={6}>
+              {this.props.currentUser === this.props.profile.owner ? (
+                <Link id={'edit-profile'} to={`/edit/${this.props.profile._id}`}><Icon name='pencil alternate'/>Edit</Link>
+              ) : ('')
+              }
               <Image src={this.props.profile.picture}/>
             </Grid.Column>
             <Grid.Column>
@@ -55,6 +59,7 @@ class ProfilePage extends React.Component {
 
 // Ready proptype for Profiles pages
 ProfilePage.propTypes = {
+  currentUser: PropTypes.string.isRequired,
   item: PropTypes.array.isRequired,
   profile: PropTypes.object,
   ready: PropTypes.bool.isRequired,
@@ -76,5 +81,6 @@ export default withTracker(({ match }) => {
     item,
     profile,
     ready,
+    currentUser: Meteor.user() ? Meteor.user().username : '',
   };
 })(ProfilePage);

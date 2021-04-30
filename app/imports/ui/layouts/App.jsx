@@ -9,7 +9,6 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ProfilePage from '../pages/ProfilePage';
 import MyProfilePage from '../pages/MyProfilePage';
-import ListItemsAdmin from '../pages/ListItemsAdmin';
 import ListAllItems from '../pages/ListAllItems';
 import AddItem from '../pages/AddItem';
 import EditItem from '../pages/EditItem';
@@ -42,7 +41,6 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/profile/:_id" component={ProfilePage}/>
             <ProtectedRoute path="/profile/" component={MyProfilePage}/>
-            <AdminProtectedRoute path="/admin" component={ListItemsAdmin}/>
             <ProtectedRoute path="/listall" component={ListAllItems}/>
             <AdminProtectedRoute path="/reportlist" component={ReportList}/>
             <ProtectedRoute path="/list" component={ListItems}/>
