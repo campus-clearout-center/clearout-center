@@ -10,7 +10,7 @@ import { Roles } from 'meteor/alanning:roles';
 class NavBar extends React.Component {
   render() {
     return (
-      <Menu className='borderless topmenu' attached="top" borderless inverted>
+      <Menu className='borderless topmenu' fluid inverted>
         <div className='left-space'><Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Image src='https://cdn.discordapp.com/attachments/827753538145746977/831292462563328000/New_Project_1.png'
             size='small'/>

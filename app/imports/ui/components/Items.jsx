@@ -22,7 +22,12 @@ class Items extends React.Component {
           </Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Card.Header>${this.props.items.price}<Button as={Link} to={`/offer/${this.props.items._id}`} primary floated='right' id='offer'>Offer</Button> </Card.Header>
+          <Card.Header>${this.props.items.price}
+            {this.props.currentUser === this.props.items.owner ? ('') : (
+              <Button as={Link} to={`/offer/${this.props.items._id}`} primary floated='right' id='offer'>Offer</Button>
+            )
+            }
+          </Card.Header>
         </Card.Content>
         <Card.Content extra>
           <Label>
