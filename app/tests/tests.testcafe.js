@@ -162,8 +162,8 @@ test('Test if you can offer an item', async (testController) => {
   await landingPage.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
   await navBar.isLoggedIn(testController, credentials.username);
-  await navBar.gotoAnItem(testController);
-  await listItemsPage.isDisplayed(testController);
+  await navBar.gotoListAll(testController);
+  await listAllItemPage.isDisplayed(testController);
   await listItemsPage.pressOffer(testController);
   await offerItemPage.isDisplayed(testController);
   await offerItemPage.pressPurchase(testController);
