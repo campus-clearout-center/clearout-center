@@ -24,7 +24,7 @@
 .grad-background {
   background: url('https://www.hawaii.edu/news/wp-content/uploads/2019/05/manoa-ranking-beautiful-affordable-schools.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: 500px;
+  height: 600px;
   color: white;
   padding-top: 200px;
 }
@@ -51,4 +51,12 @@
 
 .ui.grid.container {
   margin-top: 25px;
+}
+
+.ui.grid.column {
+  padding: 20px;
+}
+
+.row {
+  padding: 20px;
 }

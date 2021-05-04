@@ -26,6 +26,7 @@ import ListMisc from '../pages/ListMisc';
 import OffersPage from '../pages/OffersPage';
 import DeleteReport from '../pages/DeleteReport';
 import DeleteItem from '../pages/DeleteItem';
+import ContactUs from '../pages/ContactUs';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -39,6 +40,7 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
+            <Route path="/contactus" component={ContactUs}/>
             <ProtectedRoute path="/profile/:_id" component={ProfilePage}/>
             <ProtectedRoute path="/profile/" component={MyProfilePage}/>
             <ProtectedRoute path="/listall" component={ListAllItems}/>

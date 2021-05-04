@@ -3,7 +3,6 @@ import { signinPage } from './signin.page';
 import { signoutPage } from './signout.page';
 import { signupPage } from './signup.page';
 import { profilePage } from './profile.page';
-// eslint-disable-next-line import/named
 import { navBar } from './navbar.component';
 import { listItemsPage } from './listitems.page';
 import { reportItemPage } from './reportitem.page';
@@ -17,6 +16,7 @@ import { deleteReportPage } from './deletereport.page';
 import { deleteProductPage } from './deleteproduct.page';
 import { listAllItemPage } from './listall.page';
 import { myprofilePage } from './myprofile.page';
+import { contactUsPage } from './contactus.page';
 
 /* global fixture:false, test:false */
 
@@ -173,6 +173,7 @@ test('Test if you can offer an item', async (testController) => {
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
 });
+
 test('Test the Edit Profile page', async (testController) => {
   await landingPage.gotoSigninPage(testController);
   await signinPage.signin(testController, credentials.username, credentials.password);
@@ -195,4 +196,9 @@ test('Test the Category page', async (testController) => {
   await categoryPage.hasDefaultItem(testController);
   await navBar.gotoMisc(testController);
   await categoryPage.hasDefaultItem(testController);
+});
+
+test('Test the contact us page', async (testController) => {
+  await navBar.gotoContactUs(testController);
+  await contactUsPage.isDisplayed(testController);
 });
