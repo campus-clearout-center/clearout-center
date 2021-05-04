@@ -89,6 +89,10 @@ class NavBar {
   async gotoListAll(testController) {
     await testController.click('#listall');
   }
+
+  async gotoContactUs(testController) {
+    await testController.click('#contactus-redirect');
+  }
 }
 
 export const navBar = new NavBar();

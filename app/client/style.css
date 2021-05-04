@@ -52,3 +52,15 @@
 .ui.grid.container {
   margin-top: 25px;
 }
+
+.contact-us {
+  color: white;
+}
+
+.ui.grid.column {
+  padding: 20px;
+}
+
+.row {
+  padding: 20px;
+}
