@@ -10,7 +10,7 @@ function addData(data) {
   Profiles.collection.insert(data);
 }
 
-// Initialize the StuffsCollection if empty.
+// Initialize the ProfilesCollection if empty.
 if (Profiles.collection.find().count() === 0) {
   if (Meteor.settings.defaultProfiles) {
     console.log('Creating default data.');
@@ -23,7 +23,7 @@ function addItem(data) {
   Item.collection.insert(data);
 }
 
-// Initialize the StuffsCollection if empty.
+// Initialize the ItemsCollection if empty.
 if (Item.collection.find().count() === 0) {
   if (Meteor.settings.defaultItem) {
     console.log('Creating default item.');

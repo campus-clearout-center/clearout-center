@@ -22,10 +22,11 @@ class Items extends React.Component {
         <Card.Content>
           <Card.Header>{this.props.items.itemName}</Card.Header>
           <Card.Meta>
-            <Link id='profile-link'to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
+            <Link id='profile-link' to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
           </Card.Meta>
+          {this.props.items.description}
           <Card.Description>
-            {this.props.items.description}
+            {this.props.items.details}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

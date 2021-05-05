@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Loader, Header, Segment } from 'semantic-ui-react';
 import swal from 'sweetalert';
-import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, HiddenField, NumField, SelectField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -15,8 +15,8 @@ class EditItem extends React.Component {
 
   // On successful submit, insert the data.
   submit(data) {
-    const { firstName, lastName, address, itemName, image, price, description, label, _id } = data;
-    Item.collection.update(_id, { $set: { firstName, lastName, address, itemName, image, price, description, label } }, (error) => (error ?
+    const { firstName, lastName, address, itemName, image, price, description, details, label, _id } = data;
+    Item.collection.update(_id, { $set: { firstName, lastName, address, itemName, image, price, details, description, label } }, (error) => (error ?
       swal('Error', error.message, 'error') :
       swal('Success', 'Item updated successfully', 'success')));
   }
@@ -38,6 +38,7 @@ class EditItem extends React.Component {
               <TextField name='address' id='edit-address'/>
               <TextField name='image' id='edit-image'/>
               <NumField name='price' id='edit-price'/>
+              <LongTextField name='details' id='edit-details'/>
               <SelectField name='description' id='edit-description'/>
               <SelectField name='label' id='edit-label'/>
               <SubmitField value='Submit' id='edit-submit'/>

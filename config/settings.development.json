@@ -37,13 +37,6 @@
     }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
-
   "defaultItem": [
     {
       "firstName": "Philip",
@@ -51,6 +44,7 @@
       "address": "POST 307, University of Hawaii",
       "itemName": "Refrigerator",
       "image": "https://images-na.ssl-images-amazon.com/images/I/61tGvBnQW9L._AC_SL1200_.jpg",
+      "details": "Has some usage for 1 year, It's still in good condition.",
       "description": "Partially used",
       "label": "Appliances",
       "owner": "john@foo.com",
@@ -63,6 +57,7 @@
       "itemName": "English Book",
       "image": "https://images-na.ssl-images-amazon.com/images/I/41PjyNZQEjL.jpg",
       "price": "50.00",
+      "details": "Has a little bit of wear and tear, all pages are still in good condition",
       "description": "Partially used",
       "label": "Textbook",
       "owner": "john@foo.com" },
@@ -73,6 +68,7 @@
       "itemName": "Tutoring",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrIvRtCsy3wfuiOAf8qg1M46rGR8dcOdQBow&usqp=CAU",
       "price": 15.00,
+      "details": "Many students have came to me for help and I got them good straight C's guaranteed. C's get degrees",
       "description": "Partially used",
       "label": "Service",
       "owner": "jane@foo.com" },
@@ -83,6 +79,7 @@
       "itemName": "Fan",
       "image": "https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/products/fans-and-heaters/subcat/fans-heaters-dyson-hot-and-cool-stats.jpg?$responsive$&cropPathE=mobile&fit=stretch,1&wid=640",
       "price": 30.00,
+      "details": "May be a little bit dusty, but still works in good condition",
       "description": "Partially used",
       "label": "Miscellaneous",
       "owner": "jane@foo.com" },
@@ -93,6 +90,7 @@
       "itemName": "Free V Bucks",
       "image": "https://i.ytimg.com/vi/2A1drzZQtuo/maxresdefault.jpg",
       "price": 0,
+      "details": "Number one victory royale. Yea fortnite we about to get down (Get down)",
       "description": "Partially used",
       "label": "Miscellaneous",
       "owner": "admin@foo.com"

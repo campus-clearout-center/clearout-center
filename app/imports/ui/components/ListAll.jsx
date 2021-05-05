@@ -23,8 +23,9 @@ class ListAll extends React.Component {
           <Card.Meta>
             <Link id='profile-link' to={`/profile/${ownerid}`}> <span>{this.props.items.firstName} {this.props.items.lastName}</span> </Link>
           </Card.Meta>
+          {this.props.items.description}
           <Card.Description>
-            {this.props.items.description}
+            {this.props.items.details}
           </Card.Description>
         </Card.Content>
         <Card.Content extra>

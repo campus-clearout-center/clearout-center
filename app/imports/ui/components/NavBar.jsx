@@ -13,7 +13,7 @@ class NavBar extends React.Component {
       <Menu className='borderless topmenu' fluid inverted>
         <div className='left-space'><Menu.Item as={NavLink} activeClassName="" exact to="/">
           <Image src='https://cdn.discordapp.com/attachments/688738669049151523/839092783926345778/New_Project_1_2.png'
-            size='small'/>
+            size='small' id='logo'/>
         </Menu.Item></div>
         {this.props.currentUser ? (
           [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add' id='additem'>Sell Item</Menu.Item>,
