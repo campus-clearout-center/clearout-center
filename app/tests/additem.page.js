@@ -13,7 +13,7 @@ class AdditemPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  async typeInItem(testController, itemName, address, image, price, description, label) {
+  async typeInItem(testController, itemName, address, image, price, description, details, label) {
     await this.isDisplayed(testController);
     await testController.typeText('#itemName-area', itemName);
     await testController.typeText('#address-area', address);
@@ -21,6 +21,7 @@ class AdditemPage {
     await testController.typeText('#price-area', price);
     await testController.click('#description-area');
     await testController.click(Selector('#description-area').find('option').withText(description));
+    await testController.typeText('#details-area', details);
     await testController.click('#label-area');
     await testController.click(Selector('#label-area').find('option').withText(label));
     await testController.click('#item-submit');

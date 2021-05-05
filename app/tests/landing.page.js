@@ -9,6 +9,7 @@ class LandingPage {
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
     // This is first test to be run. Wait 30 seconds to avoid timeouts with GitHub Actions.
+    await testController.click('#logo');
     await testController.wait(30000).expect(this.pageSelector.exists).ok();
   }
 

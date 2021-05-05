@@ -13,7 +13,7 @@ class EdititemPage {
     await testController.expect(this.pageSelector.exists).ok();
   }
 
-  async typeInEdit(testController, itemName, address, image, price, description, label) {
+  async typeInEdit(testController, itemName, address, image, price, description, details, label) {
     await this.isDisplayed(testController);
     await testController.click('#edit-itemName');
     await testController.pressKey('ctrl+a delete');
@@ -29,6 +29,9 @@ class EdititemPage {
     await testController.typeText('#edit-price', price);
     await testController.click('#edit-description');
     await testController.click(Selector('#edit-description').find('option').withText(description));
+    await testController.click('#edit-details');
+    await testController.pressKey('ctrl+a delete');
+    await testController.typeText('#edit-details', details);
     await testController.click('#edit-label');
     await testController.click(Selector('#edit-label').find('option').withText(label));
     await testController.click('#edit-submit');

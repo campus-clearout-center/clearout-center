@@ -25,13 +25,15 @@ const credentials = { firstName: 'John', lastName: 'Doe', username: 'john@foo.co
 const newcred = { firstName: 'Rick', lastName: 'Roll', username: 'rickroll@hawaii.edu', password: 'changeme' };
 const admincreds = { username: 'admin@foo.com', password: 'changeme' };
 const report = 'it is inappropriate';
-const item = { itemName: 'Phone', address: '2712 Nihi Street', image: 'https://www.lg.com/us/images/cell-phones/md07513841/gallery/Desktop-01.jpg', price: '100', description: 'Partially used', label: 'Appliances' };
+const item = { itemName: 'Phone', address: '2712 Nihi Street', image: 'https://www.lg.com/us/images/cell-phones/md07513841/gallery/Desktop-01.jpg', price: '100', description: 'Partially used',
+  details: 'Has been used for 1 year. Few drops but still works pretty alright', label: 'Appliances' };
 const bio = 'I love UH';
 
 fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
 
 test('Test that landing page shows up', async (testController) => {
+  await landingPage.gotoSigninPage(testController);
   await landingPage.isDisplayed(testController);
 });
 
@@ -128,7 +130,7 @@ test('Test if you can add an item', async (testController) => {
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.gotoAddItem(testController);
   await addItemPage.isDisplayed(testController);
-  await addItemPage.typeInItem(testController, item.itemName, item.address, item.image, item.price, item.description, item.label);
+  await addItemPage.typeInItem(testController, item.itemName, item.address, item.image, item.price, item.description, item.details, item.label);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);
@@ -152,7 +154,7 @@ test('Test if you can edit an item', async (testController) => {
   await listItemsPage.isDisplayed(testController);
   await listItemsPage.pressEdit(testController);
   await editItemPage.isDisplayed(testController);
-  await editItemPage.typeInEdit(testController, item.itemName, item.address, item.image, item.price, item.description, item.label);
+  await editItemPage.typeInEdit(testController, item.itemName, item.address, item.image, item.price, item.description, item.details, item.label);
   await navBar.isLoggedIn(testController, credentials.username);
   await navBar.logout(testController);
   await signoutPage.isDisplayed(testController);

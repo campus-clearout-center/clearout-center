@@ -28,30 +28,30 @@ class Landing extends React.Component {
                 <Button>Register</Button>
               </Link>]
               : (
-                  <Card.Group centered>
-                    <Card>
-                      <Card.Content>
-                        <Card.Header content='Sell Item' />
-                        <Card.Description content='By pressing the "sell item" menu button you will be able to post an item
+                <Card.Group centered>
+                  <Card>
+                    <Card.Content>
+                      <Card.Header content='Sell Item' />
+                      <Card.Description content='By pressing the "sell item" menu button you will be able to post an item
                             using an item name, an address to be picked up at, an image, price, a description, and a label' />
-                      </Card.Content>
-                    </Card>
-                    <Card>
-                      <Card.Content>
-                        <Card.Header content='Catalog' />
-                        <Card.Description content='You can browse through items being sold through the "catalog" which is
+                    </Card.Content>
+                  </Card>
+                  <Card>
+                    <Card.Content>
+                      <Card.Header content='Catalog' />
+                      <Card.Description content='You can browse through items being sold through the "catalog" which is
                             sorted by the label it is given, or it can be viewed through "All items in store," an item can then
                             be offered which will share the user&apos;s email with the poster ' />
-                      </Card.Content>
-                    </Card>
-                    <Card>
-                      <Card.Content>
-                        <Card.Header content='Profile Page' />
-                        <Card.Description content='Your profile can be accessed by pressing your email in the top-right corner
+                    </Card.Content>
+                  </Card>
+                  <Card>
+                    <Card.Content>
+                      <Card.Header content='Profile Page' />
+                      <Card.Description content='Your profile can be accessed by pressing your email in the top-right corner
                              and then pressing profile. You can then see your information, posted items and reviews.' />
-                      </Card.Content>
-                    </Card>
-                  </Card.Group>
+                    </Card.Content>
+                  </Card>
+                </Card.Group>
               )
             }
           </Grid.Column>
