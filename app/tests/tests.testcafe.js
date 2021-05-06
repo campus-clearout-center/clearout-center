@@ -33,7 +33,7 @@ fixture('meteor-application-template-react localhost test with default db')
   .page('http://localhost:3000');
 
 test('Test that landing page shows up', async (testController) => {
-  await landingPage.gotoSigninPage(testController);
+  // await landingPage.gotoSigninPage(testController);
   await landingPage.isDisplayed(testController);
 });
 

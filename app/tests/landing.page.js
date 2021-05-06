@@ -1,4 +1,5 @@
 import { Selector } from 'testcafe';
+// import { navBar } from './navbar.component';
 
 class LandingPage {
   constructor() {
@@ -9,8 +10,8 @@ class LandingPage {
   /** Asserts that this page is currently displayed. */
   async isDisplayed(testController) {
     // This is first test to be run. Wait 30 seconds to avoid timeouts with GitHub Actions.
-    await testController.click('#logo');
-    await testController.wait(30000).expect(this.pageSelector.exists).ok();
+    // await navBar.clickOnLogo(testController);
+    await testController.wait(60000).expect(this.pageSelector.exists).ok();
   }
 
   /** Go to signin page. */

@@ -11,6 +11,10 @@ class NavBar {
     }
   }
 
+  async clickOnLogo(testController) {
+    await testController.click('#logo');
+  }
+
   async gotoSigninPage(testController) {
     await this.ensureLogout(testController);
     await testController.click('#login-dropdown');
