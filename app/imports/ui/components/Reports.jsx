@@ -17,7 +17,8 @@ class Reports extends React.Component {
             <span>{this.props.reports.firstName} {this.props.reports.lastName}</span>
           </Card.Meta>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content>
+          <Card.Header>Reason for report:</Card.Header>
           {this.props.reports.reason}
         </Card.Content>
         <Card.Content>

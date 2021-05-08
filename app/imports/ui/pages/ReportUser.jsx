@@ -7,6 +7,7 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
 import SimpleSchema from 'simpl-schema';
+import { Redirect } from 'react-router-dom';
 import { Item } from '../../api/item/Item';
 import { Admin } from '../../api/admin/Admin';
 
@@ -24,6 +25,15 @@ const bridge = new SimpleSchema2Bridge(formSchema);
 /** Renders the Page for adding a document. */
 class ReportUser extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '', error: '', redirectToReferer: false };
+  }
+
+  handleChange = (e, { name, value }) => {
+    this.setState({ [name]: value });
+  }
+
   // On submit, insert the data.
   submit(data) {
     const { firstName, lastName, itemName, image, reason } = data;
@@ -34,12 +44,18 @@ class ReportUser extends React.Component {
           swal('Error', error.message, 'error');
         } else {
           swal('Success', 'Report sent successfully', 'success');
+          this.setState({ error: '', redirectToReferer: true });
         }
       });
   }
 
   // Render the form. Use Uniforms: https://github.com/vazco/uniforms
   render() {
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    // if correct authentication, redirect to page instead of login screen
+    if (this.state.redirectToReferer) {
+      return <Redirect to={from}/>;
+    }
     return (
       <Grid className='borderless middlemenu' container centered id='report-item'>
         <Grid.Column>
@@ -63,6 +79,7 @@ class ReportUser extends React.Component {
 
 ReportUser.propTypes = {
   doc: PropTypes.object,
+  location: PropTypes.object,
   model: PropTypes.object,
   ready: PropTypes.bool.isRequired,
 };

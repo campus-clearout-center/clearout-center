@@ -36,16 +36,20 @@ class ListAll extends React.Component {
             {this.props.items.label}
           </Label>
         </Card.Content>
-        {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-          [
-            <Card.Content key='delete-item-button'>
-              <Button as={Link} to={`/deleteitem/${this.props.items._id}`} icon labelPosition='left' color='red' id='delete-item-button'>
+        <Card.Content extra>
+          <Button size='mini' as={Link} to={`/report/${this.props.items._id}`} icon labelPosition='left' color='red' id='report-button'>
+            <Icon name='exclamation triangle' />
+            Report Item
+          </Button>
+          {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
+            [
+              <Button size='mini' as={Link} to={`/deleteitem/${this.props.items._id}`} icon labelPosition='left' color='red' id='delete-item-button' key='delete-item-button'>
                 <Icon name='exclamation triangle' />
-            Delete Item
-              </Button>
-            </Card.Content>,
-          ]
-        ) : ''}
+                  Delete Item
+              </Button>,
+            ]
+          ) : ''}
+        </Card.Content>
       </Card>
     );
   }
