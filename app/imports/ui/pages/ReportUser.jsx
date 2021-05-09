@@ -59,7 +59,7 @@ class ReportUser extends React.Component {
     return (
       <Grid className='borderless middlemenu' container centered id='report-item'>
         <Grid.Column>
-          <Header as="h2" textAlign="center" inverted>Report the user</Header>
+          <Header as="h2" textAlign="center" inverted>Report the item</Header>
           <AutoForm schema={bridge} onSubmit={data => this.submit(data)} model={this.props.doc}>
             <Segment>
               <TextField name='firstName' disabled/>
